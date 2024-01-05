@@ -17,15 +17,20 @@ namespace TrackerLibraryTests
         }
 
         [TestMethod]
-        public void CategoryModel_is_not_null()
+        public void CategoryModel_constructed_correctly()
         {
             SutCatModel.Should().NotBeNull();
+            SutCatModel.Name.Should().BeNull();
+            SutCatModel.Active.Should().BeFalse();
         }
 
         [TestMethod]
-        public void TrackedTimeModel_is_not_null()
+        public void TrackedTimeModel_constructed_correctly()
         {
             SutTrTime.Should().NotBeNull();
+            SutTrTime.Category.Should().BeNull();
+            SutTrTime.Start.Should().Be(DateTime.MinValue);
+            SutTrTime.End.Should().Be(DateTime.MinValue);
         }
     }
 }
