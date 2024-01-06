@@ -63,9 +63,54 @@ namespace TrackerLibrary.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die No category name specified ähnelt.
         /// </summary>
-        internal static string ERROR_NO_CATEGORY_NAME {
+        internal static string ERR_CATEGORY_NAME {
             get {
-                return ResourceManager.GetString("ERROR_NO_CATEGORY_NAME", resourceCulture);
+                return ResourceManager.GetString("ERR_CATEGORY_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Category &quot;{category_name}&quot; not active ähnelt.
+        /// </summary>
+        internal static string ERR_CATEGORY_NOT_ACTIVE {
+            get {
+                return ResourceManager.GetString("ERR_CATEGORY_NOT_ACTIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Category &quot;{category_name}&quot; not found ähnelt.
+        /// </summary>
+        internal static string ERR_CATEGORY_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("ERR_CATEGORY_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die TrackedTimeModel must not be &quot;null&quot; ähnelt.
+        /// </summary>
+        internal static string ERR_TTM {
+            get {
+                return ResourceManager.GetString("ERR_TTM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Category in TrackedTimeModel must not be &quot;null&quot; ähnelt.
+        /// </summary>
+        internal static string ERR_TTM_CM {
+            get {
+                return ResourceManager.GetString("ERR_TTM_CM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No Start specified in TrackedTimeModel ähnelt.
+        /// </summary>
+        internal static string ERR_TTM_START {
+            get {
+                return ResourceManager.GetString("ERR_TTM_START", resourceCulture);
             }
         }
     }
