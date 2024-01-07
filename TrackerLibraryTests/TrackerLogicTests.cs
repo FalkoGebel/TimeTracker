@@ -11,6 +11,10 @@ namespace TrackerLibraryTests
         public void Initialize()
         {
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
+            while(TrackerLogic.GetCategories().Count > 0)
+            {
+                TrackerLogic.RemoveCategory(TrackerLogic.GetCategories()[0].Name);
+            }
         }
 
         [TestMethod]
@@ -158,6 +162,39 @@ namespace TrackerLibraryTests
             sut.Category.Should().Be(categoryModel);
             sut.Start.Should().Be(start);
             sut.End.Should().BeCloseTo(DateTime.Now, new TimeSpan(0, 0, 1));
+        }
+
+        [TestMethod]
+        public void Active_Category_returns_active_true()
+        {
+            string categoryName = "Writing";
+
+            TrackerLogic.AddCategory(categoryName);
+            CategoryModel sut = TrackerLogic.GetCategories().Find(c => c.Name == categoryName);
+            sut.Active.Should().BeTrue();
+        }
+
+        [TestMethod]
+        public void Inactivated_Category_returns_active_false()
+        {
+            string categoryName = "Reading";
+
+            TrackerLogic.AddCategory(categoryName);
+            TrackerLogic.DeactivateCategory(categoryName);
+            CategoryModel sut = TrackerLogic.GetCategories().Find(c => c.Name == categoryName);
+            sut.Active.Should().BeFalse();
+        }
+
+        [TestMethod]
+        public void Activated_Category_returns_active_true()
+        {
+            string categoryName = "Programming";
+
+            TrackerLogic.AddCategory(categoryName);
+            TrackerLogic.DeactivateCategory(categoryName);
+            TrackerLogic.ActivateCategory(categoryName);
+            CategoryModel sut = TrackerLogic.GetCategories().Find(c => c.Name == categoryName);
+            sut.Active.Should().BeTrue();
         }
     }
 }
