@@ -4,8 +4,10 @@ namespace TrackerLibrary
 {
     public static class TrackerLogic
     {
-        private static readonly List<TrackedTimeModel> trackedTimeModels = [];
-
+        /// <summary>
+        /// Activates the given category.
+        /// </summary>
+        /// <param name="categoryName">Category to activate.</param>
         public static void ActivateCategory(string categoryName)
         {
             var categories = GetCategories();
@@ -35,8 +37,17 @@ namespace TrackerLibrary
             if (categories.Find(c => c.Name == categoryName) == null)
                 return;
 
+            DeleteTrackedTimesForCategory(categoryName);
+
             categories.Remove(categories.Find(c => c.Name == categoryName));
             UpdateCategories(categories);
+        }
+
+        public static void DeleteTrackedTimesForCategory(string categoryName)
+        {
+            List<TrackedTimeModel> trackedTimes = GetTrackedTimes();
+            trackedTimes = trackedTimes.Where(tt => tt.Category.Name != categoryName).ToList();
+            UpdateTrackedTimes(trackedTimes);
         }
 
         public static bool CategoryExists(string categoryName)
@@ -44,6 +55,10 @@ namespace TrackerLibrary
             return GetCategories().Find(c => c.Name == categoryName) != null;
         }
 
+        /// <summary>
+        /// Deactivates the given category.
+        /// </summary>
+        /// <param name="categoryName">Category to deactivate.</param>
         public static void DeactivateCategory(string categoryName)
         {
             var categories = GetCategories();
@@ -61,9 +76,14 @@ namespace TrackerLibrary
             TextProcessor.SaveCategoriesToFile(categories);
         }
 
-        public static List<TrackedTimeModel> GetTrackedTimeModels()
+        public static void UpdateTrackedTimes(List<TrackedTimeModel> trackedTimes)
         {
-            return trackedTimeModels;
+            TextProcessor.SaveTrackedTimesToFile(trackedTimes);
+        }
+
+        public static List<TrackedTimeModel> GetTrackedTimes()
+        {
+            return TextProcessor.LoadTrackedTimesFromFile();
         }
 
         public static TrackedTimeModel Start(string categoryName)
@@ -96,7 +116,10 @@ namespace TrackerLibrary
                 throw new ArgumentException(Properties.Resources.ERR_TTM_START);
 
             trackedTimeModel.End = DateTime.Now;
-            trackedTimeModels.Add(trackedTimeModel);
+
+            List<TrackedTimeModel> trackedTimes = GetTrackedTimes();
+            trackedTimes.Add(trackedTimeModel);
+            UpdateTrackedTimes(trackedTimes);
         }
     }
 }
