@@ -11,9 +11,11 @@ namespace TrackerLibraryTests
         public void Initialize()
         {
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
-            while(TrackerLogic.GetCategories().Count > 0)
+            var categories = TrackerLogic.GetCategories();
+            while (categories.Count > 0)
             {
-                TrackerLogic.RemoveCategory(TrackerLogic.GetCategories()[0].Name);
+                TrackerLogic.RemoveCategory(categories[0].Name);
+                categories = TrackerLogic.GetCategories();
             }
         }
 
@@ -147,20 +149,13 @@ namespace TrackerLibraryTests
         [TestMethod]
         public void Call_Stop_wit_correct_data_and_new_TrackedTimeModel_with_Stop_in_list()
         {
-            CategoryModel categoryModel = new()
-            {
-                Name = "category"
-            };
-            DateTime start = DateTime.Now - new TimeSpan(0, 10, 30);
-            TrackedTimeModel inputTrackedTimeModel = new()
-            {
-                Category = categoryModel,
-                Start = start
-            };
+            string categoryName = "category";
+            TrackerLogic.AddCategory(categoryName);
+
+            var inputTrackedTimeModel = TrackerLogic.Start(categoryName);
             TrackerLogic.Stop(inputTrackedTimeModel);
-            TrackedTimeModel sut = TrackerLogic.GetTrackedTimeModels().Last();
-            sut.Category.Should().Be(categoryModel);
-            sut.Start.Should().Be(start);
+            TrackedTimeModel sut = TrackerLogic.GetTrackedTimes().Last();
+            sut.Category.Name.Should().Be(categoryName);
             sut.End.Should().BeCloseTo(DateTime.Now, new TimeSpan(0, 0, 1));
         }
 
@@ -195,6 +190,53 @@ namespace TrackerLibraryTests
             TrackerLogic.ActivateCategory(categoryName);
             CategoryModel sut = TrackerLogic.GetCategories().Find(c => c.Name == categoryName);
             sut.Active.Should().BeTrue();
+        }
+
+        [TestMethod]
+        public void Remove_Category_and_category_and_tracked_times_are_gone()
+        {
+            TrackerLogic.AddCategory("Writing");
+            TrackerLogic.AddCategory("Reading");
+
+            string unexpectedCategory = "Gaming";
+            TrackerLogic.AddCategory(unexpectedCategory);
+
+            TrackedTimeModel ttm = TrackerLogic.Start("Writing");
+            TrackerLogic.Stop(ttm);
+            ttm = TrackerLogic.Start("Reading");
+            TrackerLogic.Stop(ttm);
+            ttm = TrackerLogic.Start("Writing");
+            TrackerLogic.Stop(ttm);
+            ttm = TrackerLogic.Start("Writing");
+            TrackerLogic.Stop(ttm);
+            ttm = TrackerLogic.Start("Reading");
+            TrackerLogic.Stop(ttm);
+            ttm = TrackerLogic.Start(unexpectedCategory);
+            TrackerLogic.Stop(ttm);
+            ttm = TrackerLogic.Start("Writing");
+            TrackerLogic.Stop(ttm);
+            ttm = TrackerLogic.Start("Writing");
+            TrackerLogic.Stop(ttm);
+            ttm = TrackerLogic.Start("Reading");
+            TrackerLogic.Stop(ttm);
+            ttm = TrackerLogic.Start(unexpectedCategory);
+            TrackerLogic.Stop(ttm);
+            ttm = TrackerLogic.Start("Writing");
+            TrackerLogic.Stop(ttm);
+
+            List<CategoryModel> categories = TrackerLogic.GetCategories();
+            List<TrackedTimeModel> trackedTimes = TrackerLogic.GetTrackedTimes();
+
+            categories.Count(c => c.Name == unexpectedCategory).Should().Be(1);
+            trackedTimes.Count(tt => tt.Category.Name == unexpectedCategory).Should().Be(2);
+
+            TrackerLogic.RemoveCategory(unexpectedCategory);
+
+            categories = TrackerLogic.GetCategories();
+            trackedTimes = TrackerLogic.GetTrackedTimes();
+
+            categories.Count(c => c.Name == unexpectedCategory).Should().Be(0);
+            trackedTimes.Count(tt => tt.Category.Name == unexpectedCategory).Should().Be(0);
         }
     }
 }
