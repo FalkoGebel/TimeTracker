@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
+using TrackerLibrary;
 
 namespace TrackerUI
 {
@@ -15,6 +8,21 @@ namespace TrackerUI
         public MainForm()
         {
             InitializeComponent();
+
+            UpdateCategoryComboBox();
+        }
+
+        /// <summary>
+        /// Updates the category combo box items from the data source.
+        /// </summary>
+        private void UpdateCategoryComboBox()
+        {
+            CategoryComboBox.Items.Clear();
+
+            foreach (var c in TrackerLogic.GetCategories().Where(c => c.Active))
+            {
+                CategoryComboBox.Items.Add(c.Name);
+            }
         }
     }
 }
