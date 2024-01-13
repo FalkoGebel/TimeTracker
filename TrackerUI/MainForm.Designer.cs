@@ -31,12 +31,12 @@
             components = new System.ComponentModel.Container();
             CategoryLabel = new Label();
             CategoryComboBox = new ComboBox();
-            categoryModelBindingSource = new BindingSource(components);
             EditCategoriesButton = new Button();
             CategoryGroupOuterBorderPanel = new Panel();
             CategoryGroupInnerBorderPanel = new Panel();
             CategoryComboBoxBorderPanel = new Panel();
-            ((System.ComponentModel.ISupportInitialize)categoryModelBindingSource).BeginInit();
+            StartTimeTrackingButton = new Button();
+            StopTimeTrackingButton = new Button();
             CategoryGroupOuterBorderPanel.SuspendLayout();
             CategoryGroupInnerBorderPanel.SuspendLayout();
             CategoryComboBoxBorderPanel.SuspendLayout();
@@ -67,23 +67,21 @@
             CategoryComboBox.Sorted = true;
             CategoryComboBox.TabIndex = 4;
             // 
-            // categoryModelBindingSource
-            // 
-            categoryModelBindingSource.DataSource = typeof(TrackerLibrary.CategoryModel);
-            // 
             // EditCategoriesButton
             // 
             EditCategoriesButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             EditCategoriesButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             EditCategoriesButton.BackColor = Color.FromArgb(221, 161, 94);
+            EditCategoriesButton.BackgroundImage = Properties.Resources.Pen_24x24;
+            EditCategoriesButton.BackgroundImageLayout = ImageLayout.Center;
             EditCategoriesButton.FlatStyle = FlatStyle.Flat;
             EditCategoriesButton.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            EditCategoriesButton.Location = new Point(330, 6);
+            EditCategoriesButton.Location = new Point(329, 3);
             EditCategoriesButton.Name = "EditCategoriesButton";
-            EditCategoriesButton.Size = new Size(23, 23);
+            EditCategoriesButton.Size = new Size(29, 29);
             EditCategoriesButton.TabIndex = 5;
-            EditCategoriesButton.Text = "E";
             EditCategoriesButton.UseVisualStyleBackColor = true;
+            EditCategoriesButton.Click += EditCategoriesButton_Click;
             // 
             // CategoryGroupOuterBorderPanel
             // 
@@ -122,12 +120,48 @@
             CategoryComboBoxBorderPanel.Size = new Size(241, 29);
             CategoryComboBoxBorderPanel.TabIndex = 3;
             // 
+            // StartTimeTrackingButton
+            // 
+            StartTimeTrackingButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            StartTimeTrackingButton.AutoSize = true;
+            StartTimeTrackingButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            StartTimeTrackingButton.BackColor = Color.FromArgb(221, 161, 94);
+            StartTimeTrackingButton.BackgroundImageLayout = ImageLayout.Center;
+            StartTimeTrackingButton.FlatStyle = FlatStyle.Flat;
+            StartTimeTrackingButton.Font = new Font("Bahnschrift", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            StartTimeTrackingButton.Location = new Point(82, 118);
+            StartTimeTrackingButton.Name = "StartTimeTrackingButton";
+            StartTimeTrackingButton.Size = new Size(71, 37);
+            StartTimeTrackingButton.TabIndex = 6;
+            StartTimeTrackingButton.Text = "Start";
+            StartTimeTrackingButton.UseVisualStyleBackColor = true;
+            StartTimeTrackingButton.Click += StartTimeTrackingButton_Click;
+            // 
+            // StopTimeTrackingButton
+            // 
+            StopTimeTrackingButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            StopTimeTrackingButton.AutoSize = true;
+            StopTimeTrackingButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            StopTimeTrackingButton.BackColor = Color.FromArgb(221, 161, 94);
+            StopTimeTrackingButton.BackgroundImageLayout = ImageLayout.Center;
+            StopTimeTrackingButton.FlatStyle = FlatStyle.Flat;
+            StopTimeTrackingButton.Font = new Font("Bahnschrift", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            StopTimeTrackingButton.Location = new Point(232, 118);
+            StopTimeTrackingButton.Name = "StopTimeTrackingButton";
+            StopTimeTrackingButton.Size = new Size(66, 37);
+            StopTimeTrackingButton.TabIndex = 7;
+            StopTimeTrackingButton.Text = "Stop";
+            StopTimeTrackingButton.UseVisualStyleBackColor = true;
+            StopTimeTrackingButton.Click += StopTimeTrackingButton_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(254, 250, 224);
             ClientSize = new Size(384, 261);
+            Controls.Add(StopTimeTrackingButton);
+            Controls.Add(StartTimeTrackingButton);
             Controls.Add(CategoryGroupOuterBorderPanel);
             Font = new Font("Bahnschrift", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = Color.FromArgb(40, 54, 24);
@@ -137,22 +171,24 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Time Tracker";
-            ((System.ComponentModel.ISupportInitialize)categoryModelBindingSource).EndInit();
+            FormClosing += MainForm_FormClosing;
             CategoryGroupOuterBorderPanel.ResumeLayout(false);
             CategoryGroupInnerBorderPanel.ResumeLayout(false);
             CategoryGroupInnerBorderPanel.PerformLayout();
             CategoryComboBoxBorderPanel.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Label CategoryLabel;
         private ComboBox CategoryComboBox;
-        private BindingSource categoryModelBindingSource;
         private Button EditCategoriesButton;
         private Panel CategoryGroupOuterBorderPanel;
         private Panel CategoryGroupInnerBorderPanel;
         private Panel CategoryComboBoxBorderPanel;
+        private Button StartTimeTrackingButton;
+        private Button StopTimeTrackingButton;
     }
 }
