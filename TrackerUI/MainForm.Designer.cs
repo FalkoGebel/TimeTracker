@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             CategoryLabel = new Label();
             CategoryComboBox = new ComboBox();
             EditCategoriesButton = new Button();
@@ -37,6 +36,7 @@
             CategoryComboBoxBorderPanel = new Panel();
             StartTimeTrackingButton = new Button();
             StopTimeTrackingButton = new Button();
+            ShowTrackedTimesButton = new Button();
             CategoryGroupOuterBorderPanel.SuspendLayout();
             CategoryGroupInnerBorderPanel.SuspendLayout();
             CategoryComboBoxBorderPanel.SuspendLayout();
@@ -129,7 +129,7 @@
             StartTimeTrackingButton.BackgroundImageLayout = ImageLayout.Center;
             StartTimeTrackingButton.FlatStyle = FlatStyle.Flat;
             StartTimeTrackingButton.Font = new Font("Bahnschrift", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            StartTimeTrackingButton.Location = new Point(82, 118);
+            StartTimeTrackingButton.Location = new Point(226, 118);
             StartTimeTrackingButton.Name = "StartTimeTrackingButton";
             StartTimeTrackingButton.Size = new Size(71, 37);
             StartTimeTrackingButton.TabIndex = 6;
@@ -146,7 +146,7 @@
             StopTimeTrackingButton.BackgroundImageLayout = ImageLayout.Center;
             StopTimeTrackingButton.FlatStyle = FlatStyle.Flat;
             StopTimeTrackingButton.Font = new Font("Bahnschrift", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            StopTimeTrackingButton.Location = new Point(232, 118);
+            StopTimeTrackingButton.Location = new Point(303, 118);
             StopTimeTrackingButton.Name = "StopTimeTrackingButton";
             StopTimeTrackingButton.Size = new Size(66, 37);
             StopTimeTrackingButton.TabIndex = 7;
@@ -154,12 +154,29 @@
             StopTimeTrackingButton.UseVisualStyleBackColor = true;
             StopTimeTrackingButton.Click += StopTimeTrackingButton_Click;
             // 
+            // ShowTrackedTimesButton
+            // 
+            ShowTrackedTimesButton.AutoSize = true;
+            ShowTrackedTimesButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ShowTrackedTimesButton.BackColor = Color.FromArgb(221, 161, 94);
+            ShowTrackedTimesButton.BackgroundImageLayout = ImageLayout.Center;
+            ShowTrackedTimesButton.FlatStyle = FlatStyle.Flat;
+            ShowTrackedTimesButton.Font = new Font("Bahnschrift", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ShowTrackedTimesButton.Location = new Point(5, 118);
+            ShowTrackedTimesButton.Name = "ShowTrackedTimesButton";
+            ShowTrackedTimesButton.Size = new Size(157, 37);
+            ShowTrackedTimesButton.TabIndex = 8;
+            ShowTrackedTimesButton.Text = "Tracked Times";
+            ShowTrackedTimesButton.UseVisualStyleBackColor = true;
+            ShowTrackedTimesButton.Click += ShowTrackedTimesButton_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(254, 250, 224);
             ClientSize = new Size(384, 261);
+            Controls.Add(ShowTrackedTimesButton);
             Controls.Add(StopTimeTrackingButton);
             Controls.Add(StartTimeTrackingButton);
             Controls.Add(CategoryGroupOuterBorderPanel);
@@ -169,6 +186,7 @@
             Margin = new Padding(4);
             MaximizeBox = false;
             Name = "MainForm";
+            ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Time Tracker";
             FormClosing += MainForm_FormClosing;
@@ -190,5 +208,6 @@
         private Panel CategoryComboBoxBorderPanel;
         private Button StartTimeTrackingButton;
         private Button StopTimeTrackingButton;
+        private Button ShowTrackedTimesButton;
     }
 }

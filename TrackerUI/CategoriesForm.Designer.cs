@@ -33,9 +33,9 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             CategoriesDataGridView = new DataGridView();
-            categoryModelBindingSource = new BindingSource(components);
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             activeDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
+            categoryModelBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)CategoriesDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)categoryModelBindingSource).BeginInit();
             SuspendLayout();
@@ -68,7 +68,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             CategoriesDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             CategoriesDataGridView.GridColor = Color.FromArgb(96, 108, 56);
-            CategoriesDataGridView.Location = new Point(14, 12);
+            CategoriesDataGridView.Location = new Point(12, 12);
             CategoriesDataGridView.MultiSelect = false;
             CategoriesDataGridView.Name = "CategoriesDataGridView";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -82,12 +82,8 @@
             CategoriesDataGridView.RowHeadersWidth = 18;
             CategoriesDataGridView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             CategoriesDataGridView.ScrollBars = ScrollBars.Vertical;
-            CategoriesDataGridView.Size = new Size(358, 198);
+            CategoriesDataGridView.Size = new Size(360, 198);
             CategoriesDataGridView.TabIndex = 0;
-            // 
-            // categoryModelBindingSource
-            // 
-            categoryModelBindingSource.DataSource = typeof(TrackerLibrary.CategoryModel);
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -103,6 +99,10 @@
             activeDataGridViewCheckBoxColumn.HeaderText = "Active";
             activeDataGridViewCheckBoxColumn.Name = "activeDataGridViewCheckBoxColumn";
             activeDataGridViewCheckBoxColumn.Width = 59;
+            // 
+            // categoryModelBindingSource
+            // 
+            categoryModelBindingSource.DataSource = typeof(TrackerLibrary.CategoryModel);
             // 
             // CategoriesForm
             // 

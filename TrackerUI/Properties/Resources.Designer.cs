@@ -87,5 +87,41 @@ namespace TrackerUI.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Category ähnelt.
+        /// </summary>
+        internal static string TTGRID_CATEGORY_HEADER {
+            get {
+                return ResourceManager.GetString("TTGRID_CATEGORY_HEADER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Duration ähnelt.
+        /// </summary>
+        internal static string TTGRID_DURATION_HEADER {
+            get {
+                return ResourceManager.GetString("TTGRID_DURATION_HEADER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die End ähnelt.
+        /// </summary>
+        internal static string TTGRID_END_HEADER {
+            get {
+                return ResourceManager.GetString("TTGRID_END_HEADER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Start ähnelt.
+        /// </summary>
+        internal static string TTGRID_START_HEADER {
+            get {
+                return ResourceManager.GetString("TTGRID_START_HEADER", resourceCulture);
+            }
+        }
     }
 }

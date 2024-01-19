@@ -50,6 +50,7 @@ namespace TrackerUI
                 StopTimeTrackingButton.Enabled = true;
                 CategoryComboBox.Enabled = false;
                 EditCategoriesButton.Enabled = false;
+                ShowTrackedTimesButton.Enabled = false;
             }
         }
 
@@ -81,6 +82,7 @@ namespace TrackerUI
             StopTimeTrackingButton.Enabled = false;
             CategoryComboBox.Enabled = true;
             EditCategoriesButton.Enabled = true;
+            ShowTrackedTimesButton.Enabled = true;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -98,10 +100,23 @@ namespace TrackerUI
         /// </summary>
         private void ShowCategoriesForm()
         {
-            CategoriesForm cf = new([.. TrackerLogic.GetCategories().OrderBy(c => c.Name)]);
+            CategoriesForm cf = new();
             cf.ShowDialog();
-            TrackerLogic.UpdateCategories(cf.GetCategories());
             UpdateCategoryComboBox();
+        }
+
+        private void ShowTrackedTimesButton_Click(object sender, EventArgs e)
+        {
+            ShowTrackedTimesForm();
+        }
+
+        /// <summary>
+        /// Shows the tracked times form with the tracked times.
+        /// </summary>
+        private void ShowTrackedTimesForm()
+        {
+            TrackedTimesForm ttf = new();
+            ttf.ShowDialog();
         }
     }
 }

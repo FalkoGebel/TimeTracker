@@ -6,9 +6,9 @@ namespace TrackerUI
     {
         private readonly List<CategoryModel> Categories;
 
-        public CategoriesForm(List<CategoryModel> categories)
+        public CategoriesForm()
         {
-            Categories = categories;
+            Categories = [.. TrackerLogic.GetCategories().OrderBy(c => c.Name)];
             InitializeComponent();
             CategoriesDataGridView.DataSource = Categories;
         }
@@ -21,6 +21,7 @@ namespace TrackerUI
         private void CategoriesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             CategoriesDataGridView.EndEdit();
+            TrackerLogic.UpdateCategories(Categories);
         }
     }
 }
