@@ -10,4 +10,6 @@ A Program to track times for different activity categories.
 - C#
 
 ## Status
-- not usable - in development
+- Category administration (add, delete, activity status)
+- Time tracking (start, stop) for current category
+- Tracked times overview

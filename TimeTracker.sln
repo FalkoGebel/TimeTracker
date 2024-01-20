@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackerLibrary", "TrackerLibrary\TrackerLibrary.csproj", "{309D40FD-6CD7-4F75-9AA1-DA1CF4EB62A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerLibrary", "TrackerLibrary\TrackerLibrary.csproj", "{309D40FD-6CD7-4F75-9AA1-DA1CF4EB62A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackerLibraryTests", "TrackerLibraryTests\TrackerLibraryTests.csproj", "{6A790212-B32D-459D-82E8-395DD69AAB3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerLibraryTests", "TrackerLibraryTests\TrackerLibraryTests.csproj", "{6A790212-B32D-459D-82E8-395DD69AAB3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackerUI", "TrackerUI\TrackerUI.csproj", "{33145C88-8155-4DEF-97BF-658D9CF97322}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerUI", "TrackerUI\TrackerUI.csproj", "{33145C88-8155-4DEF-97BF-658D9CF97322}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projektmappenelemente", "Projektmappenelemente", "{615BD27D-8329-42B4-B95A-96835BB9DCF9}"
 	ProjectSection(SolutionItems) = preProject

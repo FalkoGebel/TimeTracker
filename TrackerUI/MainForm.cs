@@ -21,6 +21,7 @@ namespace TrackerUI
         /// </summary>
         private void UpdateCategoryComboBox()
         {
+            CategoryComboBox.ResetText();
             CategoryComboBox.Items.Clear();
 
             foreach (var c in TrackerLogic.GetCategories().Where(c => c.Active))
@@ -55,12 +56,27 @@ namespace TrackerUI
         }
 
         /// <summary>
-        /// Shows an message box designed for errors
+        /// Shows a message box designed for errors
         /// </summary>
         /// <param name="msg">Error message to show.</param>
-        private static void ShowError(string msg)
+        public static void ShowError(string msg)
         {
             MessageBox.Show(msg, Properties.Resources.ERROR_CAPTION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        /// <summary>
+        /// Shows a message box designed for questions and returns true, if OK was clicked.
+        /// </summary>
+        /// <param name="msg">Confirm message to show.</param>
+        /// <returns>True, if OK - otherwise False.</returns>
+        public static bool ShowConfirm(string msg)
+        {
+            var msgResult = MessageBox.Show(msg,
+                Properties.Resources.CONFIRM_CAPTION,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            return msgResult == DialogResult.Yes;
         }
 
         private void StopTimeTrackingButton_Click(object sender, EventArgs e)
@@ -113,7 +129,7 @@ namespace TrackerUI
         /// <summary>
         /// Shows the tracked times form with the tracked times.
         /// </summary>
-        private void ShowTrackedTimesForm()
+        private static void ShowTrackedTimesForm()
         {
             TrackedTimesForm ttf = new();
             ttf.ShowDialog();
