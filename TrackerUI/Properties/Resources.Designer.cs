@@ -61,11 +61,74 @@ namespace TrackerUI.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Active ähnelt.
+        /// </summary>
+        internal static string CGRID_ACTIVE_HEADER {
+            get {
+                return ResourceManager.GetString("CGRID_ACTIVE_HEADER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Name ähnelt.
+        /// </summary>
+        internal static string CGRID_NAME_HEADER {
+            get {
+                return ResourceManager.GetString("CGRID_NAME_HEADER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die If you delete &quot;{CATEGORY_NAME}&quot;, all tracked times for this category will get lost. Continue? ähnelt.
+        /// </summary>
+        internal static string CON_DELETE_CATEGORY {
+            get {
+                return ResourceManager.GetString("CON_DELETE_CATEGORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Confirm ähnelt.
+        /// </summary>
+        internal static string CONFIRM_CAPTION {
+            get {
+                return ResourceManager.GetString("CONFIRM_CAPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die You must not delete an active category ähnelt.
+        /// </summary>
+        internal static string ERR_CATEGORY_ACTIVE {
+            get {
+                return ResourceManager.GetString("ERR_CATEGORY_ACTIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Category alread exists ähnelt.
+        /// </summary>
+        internal static string ERR_CATEGORY_EXISTS {
+            get {
+                return ResourceManager.GetString("ERR_CATEGORY_EXISTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die No category choosen ähnelt.
         /// </summary>
         internal static string ERR_MISSING_CATEGORY {
             get {
                 return ResourceManager.GetString("ERR_MISSING_CATEGORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No category name specified ähnelt.
+        /// </summary>
+        internal static string ERR_MISSING_CATEGORY_NAME {
+            get {
+                return ResourceManager.GetString("ERR_MISSING_CATEGORY_NAME", resourceCulture);
             }
         }
         
@@ -85,6 +148,15 @@ namespace TrackerUI.Properties {
             get {
                 object obj = ResourceManager.GetObject("Pen_24x24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Active ähnelt.
+        /// </summary>
+        internal static string TTGRID_ACTIVE_HEADER {
+            get {
+                return ResourceManager.GetString("TTGRID_ACTIVE_HEADER", resourceCulture);
             }
         }
         

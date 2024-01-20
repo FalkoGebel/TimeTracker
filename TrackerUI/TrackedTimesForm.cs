@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 using TrackerLibrary;
 
 namespace TrackerUI
@@ -28,20 +20,16 @@ namespace TrackerUI
             output.Columns.Add(Properties.Resources.TTGRID_START_HEADER);
             output.Columns.Add(Properties.Resources.TTGRID_END_HEADER);
             output.Columns.Add(Properties.Resources.TTGRID_DURATION_HEADER);
+            output.Columns.Add(Properties.Resources.TTGRID_ACTIVE_HEADER, typeof(bool));
 
             // Lines
             foreach (var trackedTime in TrackerLogic.GetTrackedTimes())
             {
-                output.Rows.Add(trackedTime.Category.Name, trackedTime.Start, trackedTime.End, trackedTime.Duration);
-                /*
-                output.Rows.Add(new object[]
-                {
-                    trackedTime.Category.Name,
-                    trackedTime.Start,
-                    trackedTime.End,
-                    trackedTime.Duration
-                });
-                */
+                output.Rows.Add(trackedTime.Category.Name,
+                                trackedTime.Start,
+                                trackedTime.End,
+                                trackedTime.Duration,
+                                trackedTime.Category.Active);
             }
 
             return output;

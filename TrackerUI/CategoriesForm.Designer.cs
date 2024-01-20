@@ -36,12 +36,16 @@
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             activeDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             categoryModelBindingSource = new BindingSource(components);
+            NewButton = new Button();
+            DeleteButton = new Button();
             ((System.ComponentModel.ISupportInitialize)CategoriesDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)categoryModelBindingSource).BeginInit();
             SuspendLayout();
             // 
             // CategoriesDataGridView
             // 
+            CategoriesDataGridView.AllowUserToAddRows = false;
+            CategoriesDataGridView.AllowUserToDeleteRows = false;
             CategoriesDataGridView.AllowUserToResizeColumns = false;
             CategoriesDataGridView.AllowUserToResizeRows = false;
             CategoriesDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -84,6 +88,7 @@
             CategoriesDataGridView.ScrollBars = ScrollBars.Vertical;
             CategoriesDataGridView.Size = new Size(360, 198);
             CategoriesDataGridView.TabIndex = 0;
+            CategoriesDataGridView.CellEndEdit += CategoriesDataGridView_CellEndEdit;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -104,12 +109,48 @@
             // 
             categoryModelBindingSource.DataSource = typeof(TrackerLibrary.CategoryModel);
             // 
+            // NewButton
+            // 
+            NewButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            NewButton.AutoSize = true;
+            NewButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            NewButton.BackColor = Color.FromArgb(221, 161, 94);
+            NewButton.BackgroundImageLayout = ImageLayout.Center;
+            NewButton.FlatStyle = FlatStyle.Flat;
+            NewButton.Font = new Font("Bahnschrift", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            NewButton.Location = new Point(306, 216);
+            NewButton.Name = "NewButton";
+            NewButton.Size = new Size(66, 37);
+            NewButton.TabIndex = 7;
+            NewButton.Text = "New";
+            NewButton.UseVisualStyleBackColor = true;
+            NewButton.Click += NewButton_Click;
+            // 
+            // DeleteButton
+            // 
+            DeleteButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            DeleteButton.AutoSize = true;
+            DeleteButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            DeleteButton.BackColor = Color.FromArgb(221, 161, 94);
+            DeleteButton.BackgroundImageLayout = ImageLayout.Center;
+            DeleteButton.FlatStyle = FlatStyle.Flat;
+            DeleteButton.Font = new Font("Bahnschrift", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DeleteButton.Location = new Point(216, 216);
+            DeleteButton.Name = "DeleteButton";
+            DeleteButton.Size = new Size(84, 37);
+            DeleteButton.TabIndex = 8;
+            DeleteButton.Text = "Delete";
+            DeleteButton.UseVisualStyleBackColor = true;
+            DeleteButton.Click += DeleteButton_Click;
+            // 
             // CategoriesForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(254, 250, 224);
             ClientSize = new Size(384, 261);
+            Controls.Add(DeleteButton);
+            Controls.Add(NewButton);
             Controls.Add(CategoriesDataGridView);
             Font = new Font("Bahnschrift", 12F);
             ForeColor = Color.FromArgb(40, 54, 24);
@@ -125,6 +166,7 @@
             ((System.ComponentModel.ISupportInitialize)CategoriesDataGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)categoryModelBindingSource).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -133,5 +175,7 @@
         private BindingSource categoryModelBindingSource;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn activeDataGridViewCheckBoxColumn;
+        private Button NewButton;
+        private Button DeleteButton;
     }
 }

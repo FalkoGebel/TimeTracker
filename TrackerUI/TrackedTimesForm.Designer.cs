@@ -63,7 +63,7 @@
             TrackedTimesGridView.RowHeadersWidth = 18;
             TrackedTimesGridView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             TrackedTimesGridView.ScrollBars = ScrollBars.Vertical;
-            TrackedTimesGridView.Size = new Size(561, 420);
+            TrackedTimesGridView.Size = new Size(611, 420);
             TrackedTimesGridView.TabIndex = 0;
             // 
             // trackedTimeModelBindingSource
@@ -77,7 +77,7 @@
             OuterBorderPanel.Controls.Add(TrackedTimesGridView);
             OuterBorderPanel.Location = new Point(12, 12);
             OuterBorderPanel.Name = "OuterBorderPanel";
-            OuterBorderPanel.Size = new Size(561, 420);
+            OuterBorderPanel.Size = new Size(611, 420);
             OuterBorderPanel.TabIndex = 1;
             // 
             // TrackedTimesForm
@@ -86,7 +86,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.FromArgb(254, 250, 224);
-            ClientSize = new Size(584, 441);
+            ClientSize = new Size(634, 441);
             Controls.Add(OuterBorderPanel);
             Font = new Font("Bahnschrift", 12F);
             ForeColor = Color.FromArgb(40, 54, 24);
