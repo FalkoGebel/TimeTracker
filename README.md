@@ -13,3 +13,7 @@ A Program to track times for different activity categories.
 - Category administration (add, delete, activity status)
 - Time tracking (start, stop) for current category
 - Tracked times overview
+
+![Time Tracker Main Form](/README-Images/MainForm.jpg?raw=true "Time Tracker") ![Categories Form](/README-Images/CategoriesForm.jpg?raw=true "Time Tracker")
+
+![TrackedTimes Form](/README-Images/TrackedTimesForm.jpg?raw=true "Time Tracker")
