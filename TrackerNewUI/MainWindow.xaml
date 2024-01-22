@@ -1,0 +1,61 @@
+﻿<Window x:Class="TrackerNewUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:TrackerNewUI.Properties"
+        xmlns:local="clr-namespace:TrackerNewUI"
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.MAIN_WINDOW_TITLE}" Height="450" Width="800" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="BrushWhite" Color="{StaticResource ResourceKey=AppWhite}"/>
+            <SolidColorBrush x:Key="BrushDarkGreen" Color="{StaticResource ResourceKey=AppDarkGreen}"/>
+            <SolidColorBrush x:Key="BrushLightGreen" Color="{StaticResource ResourceKey=AppLightGreen}" />
+            <SolidColorBrush x:Key="BrushDarkBrown" Color="{StaticResource ResourceKey=AppDarkBrown}" />
+
+            <Style x:Key="NavigationButtonStyle" BasedOn="{StaticResource {x:Type Button}}" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Name="Border"
+                                    Background="{StaticResource BrushDarkGreen}"
+                                    Margin="10,10,10,0"
+                                    CornerRadius="15"
+                                    BorderThickness="0"
+                                    BorderBrush="{StaticResource BrushDarkGreen}"
+                                    Padding="7">
+                                <ContentPresenter Content="{TemplateBinding Content}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource BrushLightGreen}" TargetName="Border"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="{StaticResource BrushWhite}" />
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Foreground" Value="{StaticResource BrushDarkBrown}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <DockPanel>
+        <Border BorderBrush="Black" BorderThickness="0,0,2,0">
+            <StackPanel DockPanel.Dock="Left" Background="{StaticResource BrushWhite}">
+                <Button x:Name="AdministrationButton" Content="{x:Static p:Resources.ADMIN_BUTTON_TEXT}" Style="{StaticResource NavigationButtonStyle}" />
+                <Button x:Name="ProcessingButton" Content="{x:Static p:Resources.PROCESSING_BUTTON_TEXT}" Style="{StaticResource NavigationButtonStyle}" />
+                <Button x:Name="ReportingButton" Content="{x:Static p:Resources.REPORTING_BUTTON_TEXT}"  Style="{StaticResource NavigationButtonStyle}"/>
+            </StackPanel>
+        </Border>
+        <Grid DockPanel.Dock="Right" Height="400" Width="400" Background="{StaticResource BrushWhite}">
+            
+        </Grid>
+    </DockPanel>
+</Window>
