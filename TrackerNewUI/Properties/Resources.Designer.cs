@@ -70,6 +70,24 @@ namespace TrackerNewUI.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Category ähnelt.
+        /// </summary>
+        public static string CATEGORY_LABEL_TEXT {
+            get {
+                return ResourceManager.GetString("CATEGORY_LABEL_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Exit ähnelt.
+        /// </summary>
+        public static string EXIT_BUTTON_TEXT {
+            get {
+                return ResourceManager.GetString("EXIT_BUTTON_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Time Tracker ähnelt.
         /// </summary>
         public static string MAIN_WINDOW_TITLE {
