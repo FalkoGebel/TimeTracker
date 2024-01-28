@@ -6,13 +6,14 @@
         xmlns:p="clr-namespace:TrackerNewUI.Properties"
         xmlns:local="clr-namespace:TrackerNewUI"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.MAIN_WINDOW_TITLE}" Height="450" Width="800" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+        Title="{x:Static p:Resources.MAIN_WINDOW_TITLE}" Height="450" Width="800" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStyle="None">
     <Window.Resources>
         <ResourceDictionary>
             <SolidColorBrush x:Key="BrushWhite" Color="{StaticResource ResourceKey=AppWhite}"/>
             <SolidColorBrush x:Key="BrushDarkGreen" Color="{StaticResource ResourceKey=AppDarkGreen}"/>
             <SolidColorBrush x:Key="BrushLightGreen" Color="{StaticResource ResourceKey=AppLightGreen}" />
             <SolidColorBrush x:Key="BrushDarkBrown" Color="{StaticResource ResourceKey=AppDarkBrown}" />
+            <SolidColorBrush x:Key="BrushLightBrown" Color="{StaticResource ResourceKey=AppLightBrown}" />
 
             <Style x:Key="NavigationButtonStyle" BasedOn="{StaticResource {x:Type Button}}" TargetType="Button">
                 <Setter Property="Template">
@@ -44,18 +45,64 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
+
+            <Style x:Key="HeaderLabelStyle" BasedOn="{StaticResource {x:Type Label}}" TargetType="Label">
+                <Setter Property="Background" Value="{StaticResource BrushLightBrown}"/>
+                <Setter Property="Foreground" Value="{StaticResource BrushDarkGreen}"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
     <DockPanel>
-        <Border BorderBrush="Black" BorderThickness="0,0,2,0">
-            <StackPanel DockPanel.Dock="Left" Background="{StaticResource BrushWhite}">
-                <Button x:Name="AdministrationButton" Content="{x:Static p:Resources.ADMIN_BUTTON_TEXT}" Style="{StaticResource NavigationButtonStyle}" />
-                <Button x:Name="ProcessingButton" Content="{x:Static p:Resources.PROCESSING_BUTTON_TEXT}" Style="{StaticResource NavigationButtonStyle}" />
-                <Button x:Name="ReportingButton" Content="{x:Static p:Resources.REPORTING_BUTTON_TEXT}"  Style="{StaticResource NavigationButtonStyle}"/>
-            </StackPanel>
+        <Border BorderBrush="{StaticResource BrushDarkGreen}" BorderThickness="0,0,2,0">
+            <Grid DockPanel.Dock="Left" Background="{StaticResource BrushWhite}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <Label Content="{x:Static p:Resources.MAIN_WINDOW_TITLE}" Style="{StaticResource HeaderLabelStyle}"/>
+                    <Button x:Name="ProcessingButton" Content="{x:Static p:Resources.PROCESSING_BUTTON_TEXT}" Style="{StaticResource NavigationButtonStyle}" Click="ProcessingButton_Click" />
+                    <Button x:Name="ReportingButton" Content="{x:Static p:Resources.REPORTING_BUTTON_TEXT}"  Style="{StaticResource NavigationButtonStyle}" Click="ReportingButton_Click"/>
+                    <Button x:Name="AdministrationButton" Content="{x:Static p:Resources.ADMIN_BUTTON_TEXT}" Style="{StaticResource NavigationButtonStyle}" Click="AdministrationButton_Click" />
+                </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <Button x:Name="ExitButton" Content="{x:Static p:Resources.EXIT_BUTTON_TEXT}"  Style="{StaticResource NavigationButtonStyle}" Click="ExitButton_Click" VerticalAlignment="Bottom"/>
+                </StackPanel>
+            </Grid>
         </Border>
-        <Grid DockPanel.Dock="Right" Height="400" Width="400" Background="{StaticResource BrushWhite}">
-            
+        <Grid DockPanel.Dock="Right" Height="400" Width="400" Background="White">
+            <Grid x:Name="ProcessingPanel" Background="{StaticResource BrushWhite}" Visibility="Visible">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="{x:Static p:Resources.CATEGORY_LABEL_TEXT}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ComboBox x:Name="ProcessingCategoryComboBox" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="7" VerticalAlignment="Center" Margin="0,0,20,0">
+                </ComboBox>
+            </Grid>
+            <Grid x:Name="ReportingPanel" Background="{StaticResource BrushWhite}" Visibility="Hidden">
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center">Reporting</Label>
+            </Grid>
+            <Grid x:Name="AdministrationPanel" Background="{StaticResource BrushWhite}" Visibility="Hidden">
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center">Administration</Label>
+            </Grid>
         </Grid>
     </DockPanel>
 </Window>

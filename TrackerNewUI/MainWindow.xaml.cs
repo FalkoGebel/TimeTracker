@@ -16,10 +16,40 @@ namespace TrackerNewUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private enum Panel { Processing, Reporting, Administration };
+        
         public MainWindow()
         {
             InitializeComponent();
             Style = (Style)FindResource(typeof(Window));
+            UpdateWorkPanel(Panel.Processing);
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void UpdateWorkPanel(Panel p)
+        {
+            ProcessingPanel.Visibility = p == Panel.Processing ? Visibility.Visible : Visibility.Hidden;
+            ReportingPanel.Visibility = p == Panel.Reporting ? Visibility.Visible : Visibility.Hidden;
+            AdministrationPanel.Visibility = p == Panel.Administration ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        private void ProcessingButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateWorkPanel(Panel.Processing);
+        }
+
+        private void ReportingButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateWorkPanel(Panel.Reporting);
+        }
+
+        private void AdministrationButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateWorkPanel(Panel.Administration);
         }
     }
 }
