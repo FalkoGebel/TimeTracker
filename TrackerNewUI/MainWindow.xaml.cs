@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TrackerLibrary;
 
 namespace TrackerNewUI
 {
@@ -23,8 +24,14 @@ namespace TrackerNewUI
             InitializeComponent();
             Style = (Style)FindResource(typeof(Window));
             UpdateWorkPanel(Panel.Processing);
+            BindControls();
         }
 
+        private void BindControls()
+        {
+            ProcessingCategoryComboBox.ItemsSource = TrackerLogic.GetCategories();
+        }
+        
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
