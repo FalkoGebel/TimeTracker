@@ -123,16 +123,31 @@
   <data name="CATEGORY_LABEL_TEXT" xml:space="preserve">
     <value>Category</value>
   </data>
+  <data name="ERROR_HEADER" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ERROR_NO_CATEGORY_CHOSEN" xml:space="preserve">
+    <value>No category chosen</value>
+  </data>
   <data name="EXIT_BUTTON_TEXT" xml:space="preserve">
     <value>Exit</value>
   </data>
   <data name="MAIN_WINDOW_TITLE" xml:space="preserve">
     <value>Time Tracker</value>
   </data>
+  <data name="OK_BUTTON_TEXT" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="PROCESSING_BUTTON_TEXT" xml:space="preserve">
     <value>Processing</value>
   </data>
   <data name="REPORTING_BUTTON_TEXT" xml:space="preserve">
     <value>Reporting</value>
+  </data>
+  <data name="START_BUTTON_TEXT" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="STOP_BUTTON_TEXT" xml:space="preserve">
+    <value>Stop</value>
   </data>
 </root>
