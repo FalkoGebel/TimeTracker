@@ -79,6 +79,24 @@ namespace TrackerNewUI.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error ähnelt.
+        /// </summary>
+        public static string ERROR_HEADER {
+            get {
+                return ResourceManager.GetString("ERROR_HEADER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No category chosen ähnelt.
+        /// </summary>
+        public static string ERROR_NO_CATEGORY_CHOSEN {
+            get {
+                return ResourceManager.GetString("ERROR_NO_CATEGORY_CHOSEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Exit ähnelt.
         /// </summary>
         public static string EXIT_BUTTON_TEXT {
@@ -97,6 +115,15 @@ namespace TrackerNewUI.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die OK ähnelt.
+        /// </summary>
+        public static string OK_BUTTON_TEXT {
+            get {
+                return ResourceManager.GetString("OK_BUTTON_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Processing ähnelt.
         /// </summary>
         public static string PROCESSING_BUTTON_TEXT {
@@ -111,6 +138,24 @@ namespace TrackerNewUI.Properties {
         public static string REPORTING_BUTTON_TEXT {
             get {
                 return ResourceManager.GetString("REPORTING_BUTTON_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Start ähnelt.
+        /// </summary>
+        public static string START_BUTTON_TEXT {
+            get {
+                return ResourceManager.GetString("START_BUTTON_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stop ähnelt.
+        /// </summary>
+        public static string STOP_BUTTON_TEXT {
+            get {
+                return ResourceManager.GetString("STOP_BUTTON_TEXT", resourceCulture);
             }
         }
     }

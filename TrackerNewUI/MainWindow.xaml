@@ -6,16 +6,92 @@
         xmlns:p="clr-namespace:TrackerNewUI.Properties"
         xmlns:local="clr-namespace:TrackerNewUI"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.MAIN_WINDOW_TITLE}" Height="450" Width="800" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStyle="None"
-    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+        Title="{x:Static p:Resources.MAIN_WINDOW_TITLE}" Height="450" Width="800" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" Closing="Window_Closing" WindowStyle="None">
     <Window.Resources>
         <ResourceDictionary>
+
+            <!-- Base colors start -->
             <SolidColorBrush x:Key="BrushWhite" Color="{StaticResource ResourceKey=AppWhite}"/>
             <SolidColorBrush x:Key="BrushDarkGreen" Color="{StaticResource ResourceKey=AppDarkGreen}"/>
             <SolidColorBrush x:Key="BrushLightGreen" Color="{StaticResource ResourceKey=AppLightGreen}" />
             <SolidColorBrush x:Key="BrushDarkBrown" Color="{StaticResource ResourceKey=AppDarkBrown}" />
             <SolidColorBrush x:Key="BrushLightBrown" Color="{StaticResource ResourceKey=AppLightBrown}" />
+            <!-- Base colors end -->
 
+            <!-- Header label start -->
+            <Style x:Key="HeaderLabelStyle" BasedOn="{StaticResource {x:Type Label}}" TargetType="Label">
+                <Setter Property="Background" Value="{StaticResource BrushLightBrown}"/>
+                <Setter Property="Foreground" Value="{StaticResource BrushDarkGreen}"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BrushLightBrown}"/>
+            </Style>
+            <!-- Header label end -->
+
+            <!-- Area header label start -->
+            <Style x:Key="AreaHeaderLabelStyle" BasedOn="{StaticResource {x:Type Label}}" TargetType="Label">
+                <Setter Property="Background" Value="{StaticResource BrushDarkGreen}"/>
+                <Setter Property="Foreground" Value="{StaticResource BrushDarkBrown}"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BrushLightBrown}"/>
+            </Style>
+            <!-- Area header label end -->
+
+            <!-- Normal label start -->
+            <Style x:Key="NormalLabelStyle" BasedOn="{StaticResource {x:Type Label}}" TargetType="Label">
+                <Setter Property="Background" Value="{StaticResource BrushWhite}"/>
+                <Setter Property="Foreground" Value="{StaticResource BrushDarkGreen}"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            </Style>
+            <!-- Normal label end -->
+
+            <!-- Header minimized button start -->
+            <Style x:Key="HeaderMinimizeButtonStyle" BasedOn="{StaticResource {x:Type Button}}" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Name="Border"
+                                    Background="{StaticResource BrushLightBrown}"
+                                    Margin="0"
+                                    BorderThickness="2"
+                                    BorderBrush="{StaticResource BrushDarkBrown}"
+                                    Padding="7">
+                                <ContentPresenter Content="{TemplateBinding Content}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource BrushDarkBrown}" TargetName="Border"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="{StaticResource BrushDarkGreen}"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            </Style>
+            <!-- Header minimized button end -->
+
+            <!-- Navigation buttons start -->
             <Style x:Key="NavigationButtonStyle" BasedOn="{StaticResource {x:Type Button}}" TargetType="Button">
                 <Setter Property="Template">
                     <Setter.Value>
@@ -35,6 +111,9 @@
                                 <Trigger Property="IsPressed" Value="True">
                                     <Setter Property="Background" Value="{StaticResource BrushLightGreen}" TargetName="Border"/>
                                 </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Background" Value="{StaticResource BrushLightBrown}" TargetName="Border"/>
+                                </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
@@ -46,17 +125,8 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
+            <!-- Navigation buttons end -->
 
-            <Style x:Key="HeaderLabelStyle" BasedOn="{StaticResource {x:Type Label}}" TargetType="Label">
-                <Setter Property="Background" Value="{StaticResource BrushLightBrown}"/>
-                <Setter Property="Foreground" Value="{StaticResource BrushDarkGreen}"/>
-                <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="10"/>
-                <Setter Property="FontSize" Value="20"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </Style>
-            
             <!-- ComboBox start -->
             <Style x:Key="FocusVisual">
                 <Setter Property="Control.Template">
@@ -356,59 +426,135 @@
                 </Setter>
             </Style>
             <!-- ComboBox end -->
-            
+
+            <!-- Functional buttons start -->
+            <Style x:Key="FunctionalButtonStyle" BasedOn="{StaticResource {x:Type Button}}" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Name="Border"
+                                    Background="{StaticResource BrushDarkGreen}"
+                                    Margin="10,10,10,10"
+                                    CornerRadius="5"
+                                    BorderThickness="2"
+                                    BorderBrush="{StaticResource BrushLightBrown}"
+                                    Padding="5">
+                                <ContentPresenter Content="{TemplateBinding Content}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="BorderBrush" Value="{StaticResource BrushDarkBrown}" TargetName="Border"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource BrushLightGreen}" TargetName="Border"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Background" Value="{StaticResource BrushLightBrown}" TargetName="Border"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="{StaticResource BrushWhite}" />
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Foreground" Value="{StaticResource BrushDarkBrown}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <!-- Functional buttons end -->
+
         </ResourceDictionary>
     </Window.Resources>
     <DockPanel>
-        <Border BorderBrush="{StaticResource BrushDarkGreen}" BorderThickness="0,0,2,0">
-            <Grid DockPanel.Dock="Left" Background="{StaticResource BrushWhite}">
+        <DockPanel DockPanel.Dock="Top" >
+            <Button DockPanel.Dock="Right" x:Name="HeaderMinimizeButton" Content="&#x2193;" Style="{StaticResource HeaderMinimizeButtonStyle}" BorderBrush="{DynamicResource BrushDarkBrown}" Click="HeaderMinimizeButton_Click" />
+            <Label DockPanel.Dock="Left" x:Name="HeaderLabel" Content="{x:Static p:Resources.MAIN_WINDOW_TITLE}" Style="{StaticResource HeaderLabelStyle}" MouseDown="HeaderLabel_MouseDown"/>
+        </DockPanel>
+        <Grid>
+            <DockPanel Grid.ColumnSpan="2">
+                <Border BorderBrush="{StaticResource BrushDarkGreen}" BorderThickness="0,0,2,0">
+                    <Grid x:Name="NavigationPanel" DockPanel.Dock="Left" Background="{StaticResource BrushWhite}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="6*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0">
+                            <Button x:Name="ProcessingButton" Content="{x:Static p:Resources.PROCESSING_BUTTON_TEXT}" Style="{StaticResource NavigationButtonStyle}" Click="ProcessingButton_Click" />
+                            <Button x:Name="ReportingButton" Content="{x:Static p:Resources.REPORTING_BUTTON_TEXT}"  Style="{StaticResource NavigationButtonStyle}" Click="ReportingButton_Click"/>
+                            <Button x:Name="AdministrationButton" Content="{x:Static p:Resources.ADMIN_BUTTON_TEXT}" Style="{StaticResource NavigationButtonStyle}" Click="AdministrationButton_Click" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="1">
+                            <Button x:Name="ExitButton" Content="{x:Static p:Resources.EXIT_BUTTON_TEXT}"  Style="{StaticResource NavigationButtonStyle}" Click="ExitButton_Click" VerticalAlignment="Bottom"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Grid DockPanel.Dock="Right" Height="400" Width="400" Background="White">
+                    <Grid x:Name="ProcessingPanel" Background="{StaticResource BrushWhite}" Visibility="Visible">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" Content="{x:Static p:Resources.PROCESSING_BUTTON_TEXT}" Style="{DynamicResource AreaHeaderLabelStyle}"/>
+                        <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Content="{x:Static p:Resources.CATEGORY_LABEL_TEXT}" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="{StaticResource BrushDarkGreen}" FontWeight="Bold"/>
+                        <ComboBox Style="{DynamicResource ComboBoxStyle}" x:Name="ProcessingCategoryComboBox" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="7" ItemsSource="{Binding}" VerticalAlignment="Center" Margin="0,0,20,0">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Button x:Name="ProcessingStartButton" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" Content="{x:Static p:Resources.START_BUTTON_TEXT}"  Style="{StaticResource FunctionalButtonStyle}" Click="ProcessingStartButton_Click"/>
+                        <Button x:Name="ProcessingStopButton" Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="4" Content="{x:Static p:Resources.STOP_BUTTON_TEXT}"  Style="{StaticResource FunctionalButtonStyle}" Click="ProcessingStopButton_Click" IsEnabled="False"/>
+                    </Grid>
+                    <Grid x:Name="ReportingPanel" Background="{StaticResource BrushWhite}" Visibility="Hidden">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center">Reporting</Label>
+                    </Grid>
+                    <Grid x:Name="AdministrationPanel" Background="{StaticResource BrushWhite}" Visibility="Hidden">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center">Administration</Label>
+                    </Grid>
+                </Grid>
+            </DockPanel>
+            <Grid x:Name="ErrorPanel"  Background="{StaticResource BrushWhite}" Visibility="Hidden" Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="6*"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0">
-                    <Label Content="{x:Static p:Resources.MAIN_WINDOW_TITLE}" Style="{StaticResource HeaderLabelStyle}"/>
-                    <Button x:Name="ProcessingButton" Content="{x:Static p:Resources.PROCESSING_BUTTON_TEXT}" Style="{StaticResource NavigationButtonStyle}" Click="ProcessingButton_Click" />
-                    <Button x:Name="ReportingButton" Content="{x:Static p:Resources.REPORTING_BUTTON_TEXT}"  Style="{StaticResource NavigationButtonStyle}" Click="ReportingButton_Click"/>
-                    <Button x:Name="AdministrationButton" Content="{x:Static p:Resources.ADMIN_BUTTON_TEXT}" Style="{StaticResource NavigationButtonStyle}" Click="AdministrationButton_Click" />
-                </StackPanel>
-                <StackPanel Grid.Row="1">
-                    <Button x:Name="ExitButton" Content="{x:Static p:Resources.EXIT_BUTTON_TEXT}"  Style="{StaticResource NavigationButtonStyle}" Click="ExitButton_Click" VerticalAlignment="Bottom"/>
-                </StackPanel>
-            </Grid>
-        </Border>
-        <Grid DockPanel.Dock="Right" Height="400" Width="400" Background="White">
-            <Grid x:Name="ProcessingPanel" Background="{StaticResource BrushWhite}" Visibility="Visible">
-                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
                     <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="{x:Static p:Resources.CATEGORY_LABEL_TEXT}" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="{StaticResource BrushDarkGreen}" FontWeight="Bold"/>
-                <ComboBox Style="{DynamicResource ComboBoxStyle}" x:Name="ProcessingCategoryComboBox" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="7" ItemsSource="{Binding}" VerticalAlignment="Center" Margin="0,0,20,0">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}"/>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-            </Grid>
-            <Grid x:Name="ReportingPanel" Background="{StaticResource BrushWhite}" Visibility="Hidden">
-                <Label HorizontalAlignment="Center" VerticalAlignment="Center">Reporting</Label>
-            </Grid>
-            <Grid x:Name="AdministrationPanel" Background="{StaticResource BrushWhite}" Visibility="Hidden">
-                <Label HorizontalAlignment="Center" VerticalAlignment="Center">Administration</Label>
+                <Border Grid.Row="1" Grid.Column="1" BorderThickness="2" BorderBrush="{StaticResource BrushLightBrown}"/>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Label Content="{x:Static p:Resources.ERROR_HEADER}" Style="{DynamicResource HeaderLabelStyle}"/>
+                    <Label x:Name="ErrorPanelMessageLabel" Grid.Row="1" Style="{DynamicResource NormalLabelStyle}" Margin="2,7,2,0"/>
+                    <Button x:Name="ErrorPanelOkButton" Grid.Row="2" Content="{x:Static p:Resources.OK_BUTTON_TEXT}" Style="{StaticResource FunctionalButtonStyle}" Click="ErrorPanelOkButton_Click" />
+                </Grid>
             </Grid>
         </Grid>
     </DockPanel>
