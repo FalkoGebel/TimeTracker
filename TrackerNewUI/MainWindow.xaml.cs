@@ -18,19 +18,23 @@ namespace TrackerNewUI
     public partial class MainWindow : Window
     {
         private enum Panel { Processing, Reporting, Administration };
+        private List<CategoryModel> Categories = new();
         private TrackedTimeModel? trackedTimeModel;
         
         public MainWindow()
         {
             InitializeComponent();
+            Categories = TrackerLogic.GetCategories();
             Style = (Style)FindResource(typeof(Window));
-            UpdateWorkPanel(Panel.Processing);
+            //UpdateWorkPanel(Panel.Processing);
+            UpdateWorkPanel(Panel.Administration);
             BindControls();
         }
 
         private void BindControls()
         {
-            ProcessingCategoryComboBox.ItemsSource = TrackerLogic.GetCategories().Where(c => c.Active);
+            ProcessingCategoryComboBox.ItemsSource = Categories.Where(c => c.Active);
+            AdministrationCategoriesDataGrid.ItemsSource = Categories;
         }
         
         private void ExitButton_Click(object sender, RoutedEventArgs e)
