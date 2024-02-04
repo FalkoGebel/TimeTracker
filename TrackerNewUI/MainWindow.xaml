@@ -467,6 +467,13 @@
             </Style>
             <!-- Functional buttons end -->
 
+            <!-- DataGrid start -->
+            <Style x:Key="DataGridStyle" BasedOn="{StaticResource {x:Type DataGrid}}" TargetType="DataGrid">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style> 
+            <!-- DataGrid end -->
+
         </ResourceDictionary>
     </Window.Resources>
     <DockPanel>
@@ -493,7 +500,7 @@
                     </Grid>
                 </Border>
                 <Grid DockPanel.Dock="Right" Height="400" Width="400" Background="White">
-                    <Grid x:Name="ProcessingPanel" Background="{StaticResource BrushWhite}" Visibility="Visible">
+                    <Grid x:Name="ProcessingPanel" Background="{StaticResource BrushWhite}" Visibility="Hidden">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"/>
                             <RowDefinition/>
@@ -528,12 +535,18 @@
                     <Grid x:Name="ReportingPanel" Background="{StaticResource BrushWhite}" Visibility="Hidden">
                         <Label HorizontalAlignment="Center" VerticalAlignment="Center">Reporting</Label>
                     </Grid>
-                    <Grid x:Name="AdministrationPanel" Background="{StaticResource BrushWhite}" Visibility="Hidden">
-                        <Label HorizontalAlignment="Center" VerticalAlignment="Center">Administration</Label>
+                    <Grid x:Name="AdministrationPanel" Background="{StaticResource BrushWhite}" Visibility="Visible">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="{x:Static p:Resources.ADMIN_BUTTON_TEXT}" Style="{DynamicResource AreaHeaderLabelStyle}"/>
+                        <DataGrid Style="{DynamicResource DataGridStyle}" x:Name="AdministrationCategoriesDataGrid" Grid.Row="1" Grid.Column="0"/>
                     </Grid>
                 </Grid>
             </DockPanel>
-            <Grid x:Name="ErrorPanel"  Background="{StaticResource BrushWhite}" Visibility="Hidden" Grid.ColumnSpan="2">
+            <Grid x:Name="ErrorPanel"  Background="Transparent" Visibility="Hidden" Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition />
@@ -544,7 +557,7 @@
                     <ColumnDefinition Width="5*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Border Grid.Row="1" Grid.Column="1" BorderThickness="2" BorderBrush="{StaticResource BrushLightBrown}"/>
+                <Border Grid.Row="1" Grid.Column="1" BorderThickness="2" BorderBrush="{StaticResource BrushLightBrown}" Background="{StaticResource BrushWhite}"/>
                 <Grid Grid.Row="1" Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition />

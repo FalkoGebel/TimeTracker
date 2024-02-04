@@ -2,7 +2,11 @@
 {
     public static class TextProcessor
     {
+#if DEBUG
+        private const string APP_DIRECTORY = "time_tracker_data_test";
+#else
         private const string APP_DIRECTORY = "time_tracker_data";
+#endif
         private const string CATEGORY_FILE = "categories.txt";
         private const string SEPARATOR = "-|||-";
         private const string TRACKED_TIMES_FILE = "tracked_times.txt";
