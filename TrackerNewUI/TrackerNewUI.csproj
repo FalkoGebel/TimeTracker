@@ -9,7 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\TT_darkgray_near_black_background_24x24.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TrackerLibrary\TrackerLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\TT_darkgray_near_black_background_24x24.png" />
   </ItemGroup>
 
   <ItemGroup>

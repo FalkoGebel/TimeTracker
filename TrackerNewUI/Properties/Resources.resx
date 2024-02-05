@@ -120,6 +120,15 @@
   <data name="ADMIN_BUTTON_TEXT" xml:space="preserve">
     <value>Administration</value>
   </data>
+  <data name="ADMIN_CAT_TABLE_ACTIVE" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="ADMIN_CAT_TABLE_CATEGORY" xml:space="preserve">
+    <value>Category Name</value>
+  </data>
+  <data name="ADMIN_SAVE_BUTTON_TEXT" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="CATEGORY_LABEL_TEXT" xml:space="preserve">
     <value>Category</value>
   </data>

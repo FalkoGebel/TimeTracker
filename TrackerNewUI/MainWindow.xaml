@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:TrackerNewUI"
         mc:Ignorable="d"
         Title="{x:Static p:Resources.MAIN_WINDOW_TITLE}" Height="450" Width="800" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
-    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" Closing="Window_Closing" WindowStyle="None">
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" Closing="Window_Closing" WindowStyle="None" Icon="/Assets/TT_darkgray_near_black_background_24x24.png">
     <Window.Resources>
         <ResourceDictionary>
 
@@ -471,7 +471,18 @@
             <Style x:Key="DataGridStyle" BasedOn="{StaticResource {x:Type DataGrid}}" TargetType="DataGrid">
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="BorderThickness" Value="0"/>
-            </Style> 
+                <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource BrushDarkGreen}"/>
+                <Setter Property="VerticalGridLinesBrush" Value="{StaticResource BrushDarkGreen}"/>
+            </Style>
+            <Style x:Key="DataGridColumnHeaderStyle" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="DataGridColumnHeader">
+                <Setter Property="Background" Value="{StaticResource BrushDarkGreen}"/>
+                <Setter Property="Foreground" Value="{StaticResource BrushLightBrown}"/>
+                <Setter Property="Padding" Value="4"/>
+            </Style>
+            <Style x:Key="DataGridRowStyle" BasedOn="{StaticResource {x:Type DataGridRow}}" TargetType="DataGridRow">
+                <Setter Property="Background" Value="{StaticResource BrushWhite}"/>
+                <Setter Property="Foreground" Value="{StaticResource BrushDarkGreen}"/>
+            </Style>
             <!-- DataGrid end -->
 
         </ResourceDictionary>
@@ -539,10 +550,20 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"/>
                             <RowDefinition/>
+                            <RowDefinition/>
                             <RowDefinition Height="40"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0" Grid.Column="0" Content="{x:Static p:Resources.ADMIN_BUTTON_TEXT}" Style="{DynamicResource AreaHeaderLabelStyle}"/>
-                        <DataGrid Style="{DynamicResource DataGridStyle}" x:Name="AdministrationCategoriesDataGrid" Grid.Row="1" Grid.Column="0"/>
+                        <DataGrid x:Name="AdministrationCategoriesDataGrid" Grid.Row="1" Grid.Column="0" Margin="0,5,0,0" HeadersVisibility="Column"
+                                  Style="{DynamicResource DataGridStyle}" 
+                                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}"
+                                  RowStyle="{DynamicResource DataGridRowStyle}" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="{x:Static p:Resources.ADMIN_CAT_TABLE_CATEGORY}" Width="*" Binding="{Binding Name}"></DataGridTextColumn>
+                                <DataGridCheckBoxColumn Header="{x:Static p:Resources.ADMIN_CAT_TABLE_ACTIVE}" Binding="{Binding Active}"></DataGridCheckBoxColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="AdministrationSaveButton" Grid.Row="2" Grid.Column="0" Content="{x:Static p:Resources.ADMIN_SAVE_BUTTON_TEXT}" Style="{StaticResource FunctionalButtonStyle}" Click="AdministrationSaveButton_Click"/>
                     </Grid>
                 </Grid>
             </DockPanel>

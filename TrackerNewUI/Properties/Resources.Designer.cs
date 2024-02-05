@@ -70,6 +70,33 @@ namespace TrackerNewUI.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Active ähnelt.
+        /// </summary>
+        public static string ADMIN_CAT_TABLE_ACTIVE {
+            get {
+                return ResourceManager.GetString("ADMIN_CAT_TABLE_ACTIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Category Name ähnelt.
+        /// </summary>
+        public static string ADMIN_CAT_TABLE_CATEGORY {
+            get {
+                return ResourceManager.GetString("ADMIN_CAT_TABLE_CATEGORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save ähnelt.
+        /// </summary>
+        public static string ADMIN_SAVE_BUTTON_TEXT {
+            get {
+                return ResourceManager.GetString("ADMIN_SAVE_BUTTON_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Category ähnelt.
         /// </summary>
         public static string CATEGORY_LABEL_TEXT {
