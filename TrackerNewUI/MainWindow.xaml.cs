@@ -128,5 +128,19 @@ namespace TrackerNewUI
         {
             WindowState = WindowState.Minimized;
         }
+
+        private void AdministrationSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveCategoryTable();
+        }
+
+        private void SaveCategoryTable()
+        {
+            ShowErorr("Not implemented");
+            
+            // TODO - check validity of data
+            // TODO - save data, if valid
+            // TODO - give feedback, if data not valid
+        }
     }
 }

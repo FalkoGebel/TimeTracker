@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             CategoryLabel = new Label();
             CategoryComboBox = new ComboBox();
             EditCategoriesButton = new Button();
@@ -183,10 +184,10 @@
             Font = new Font("Bahnschrift", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = Color.FromArgb(40, 54, 24);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             MaximizeBox = false;
             Name = "MainForm";
-            ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Time Tracker";
             FormClosing += MainForm_FormClosing;
