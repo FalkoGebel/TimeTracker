@@ -88,11 +88,20 @@ namespace TrackerNewUI.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Delete ähnelt.
         /// </summary>
-        public static string ADMIN_SAVE_BUTTON_TEXT {
+        public static string ADMIN_DELETE_BUTTON_TEXT {
             get {
-                return ResourceManager.GetString("ADMIN_SAVE_BUTTON_TEXT", resourceCulture);
+                return ResourceManager.GetString("ADMIN_DELETE_BUTTON_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die New ähnelt.
+        /// </summary>
+        public static string ADMIN_NEW_BUTTON_TEXT {
+            get {
+                return ResourceManager.GetString("ADMIN_NEW_BUTTON_TEXT", resourceCulture);
             }
         }
         
@@ -106,6 +115,33 @@ namespace TrackerNewUI.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die If you delete &quot;{CATEGORY_NAME}&quot;, all tracked times for this category will get lost. Continue? ähnelt.
+        /// </summary>
+        public static string CONFIRM_CATEGORY_DELETE {
+            get {
+                return ResourceManager.GetString("CONFIRM_CATEGORY_DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Confirm ähnelt.
+        /// </summary>
+        public static string CONFIRM_HEADER {
+            get {
+                return ResourceManager.GetString("CONFIRM_HEADER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die You are not allowed to delete active categories. ähnelt.
+        /// </summary>
+        public static string ERROR_CATEGORY_IS_ACTIVE {
+            get {
+                return ResourceManager.GetString("ERROR_CATEGORY_IS_ACTIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Error ähnelt.
         /// </summary>
         public static string ERROR_HEADER {
@@ -115,7 +151,7 @@ namespace TrackerNewUI.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die No category chosen ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die No category chosen. ähnelt.
         /// </summary>
         public static string ERROR_NO_CATEGORY_CHOSEN {
             get {
@@ -138,6 +174,15 @@ namespace TrackerNewUI.Properties {
         public static string MAIN_WINDOW_TITLE {
             get {
                 return ResourceManager.GetString("MAIN_WINDOW_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No ähnelt.
+        /// </summary>
+        public static string NO_BUTTON_TEXT {
+            get {
+                return ResourceManager.GetString("NO_BUTTON_TEXT", resourceCulture);
             }
         }
         
@@ -183,6 +228,15 @@ namespace TrackerNewUI.Properties {
         public static string STOP_BUTTON_TEXT {
             get {
                 return ResourceManager.GetString("STOP_BUTTON_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Yes ähnelt.
+        /// </summary>
+        public static string YES_BUTTON_TEXT {
+            get {
+                return ResourceManager.GetString("YES_BUTTON_TEXT", resourceCulture);
             }
         }
     }
