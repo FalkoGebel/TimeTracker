@@ -7,7 +7,8 @@
         xmlns:local="clr-namespace:TrackerNewUI"
         mc:Ignorable="d"
         Title="{x:Static p:Resources.MAIN_WINDOW_TITLE}" Height="450" Width="800" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
-    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" Closing="Window_Closing" WindowStyle="None" Icon="/Assets/TT_darkgray_near_black_background_24x24.png">
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" Closing="Window_Closing" WindowStyle="None" Icon="/Assets/TT_darkgray_near_black_background_24x24.png"
+        >
     <Window.Resources>
         <ResourceDictionary>
 
@@ -557,17 +558,55 @@
                         <DataGrid x:Name="AdministrationCategoriesDataGrid" Grid.Row="1" Grid.Column="0" Margin="0,5,0,0" HeadersVisibility="Column"
                                   Style="{DynamicResource DataGridStyle}" 
                                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}"
-                                  RowStyle="{DynamicResource DataGridRowStyle}" AutoGenerateColumns="False">
+                                  RowStyle="{DynamicResource DataGridRowStyle}" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="{x:Static p:Resources.ADMIN_CAT_TABLE_CATEGORY}" Width="*" Binding="{Binding Name}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="{x:Static p:Resources.ADMIN_CAT_TABLE_CATEGORY}" Width="*" Binding="{Binding Name}" IsReadOnly="True"/>
                                 <DataGridCheckBoxColumn Header="{x:Static p:Resources.ADMIN_CAT_TABLE_ACTIVE}" Binding="{Binding Active}"></DataGridCheckBoxColumn>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <Button x:Name="AdministrationSaveButton" Grid.Row="2" Grid.Column="0" Content="{x:Static p:Resources.ADMIN_SAVE_BUTTON_TEXT}" Style="{StaticResource FunctionalButtonStyle}" Click="AdministrationSaveButton_Click"/>
+                        <Grid Grid.Row="2" Grid.Column="0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="AdministrationNewButton" Grid.Row="0" Grid.Column="0" Content="{x:Static p:Resources.ADMIN_NEW_BUTTON_TEXT}" Style="{StaticResource FunctionalButtonStyle}" Click="AdministrationNewButton_Click"/>
+                            <Button x:Name="AdministrationDeleteButton" Grid.Row="0" Grid.Column="1" Content="{x:Static p:Resources.ADMIN_DELETE_BUTTON_TEXT}" Style="{StaticResource FunctionalButtonStyle}" Click="AdministrationDeleteButton_Click"/>
+                        </Grid>
                     </Grid>
                 </Grid>
             </DockPanel>
-            <Grid x:Name="ErrorPanel"  Background="Transparent" Visibility="Hidden" Grid.ColumnSpan="2">
+            <Grid x:Name="ConfirmPanel"  Background="Transparent" Visibility="Hidden" Grid.ColumnSpan="2" MaxWidth="500">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition />
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="1" Grid.Column="1" BorderThickness="2" BorderBrush="{StaticResource BrushLightBrown}" Background="{StaticResource BrushWhite}"/>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label Content="{x:Static p:Resources.CONFIRM_HEADER}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{DynamicResource HeaderLabelStyle}"/>
+                    <TextBlock x:Name="ConfirmPanelMessageTextBlock" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="2,7,2,0" Padding="3"/>
+                    <!--<Label x:Name="ConfirmPanelMessageLabel" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{DynamicResource NormalLabelStyle}" Margin="2,7,2,0">
+                        <AccessText x:Name="ConfirmPanelMessageLabelText" TextWrapping="Wrap"/>
+                    </Label>-->
+                    <Button x:Name="ConfirmPanelYesButton" Grid.Row="2" Grid.Column="0" Content="{x:Static p:Resources.YES_BUTTON_TEXT}" Style="{StaticResource FunctionalButtonStyle}" Click="ConfirmPanelYesButton_Click"/>
+                    <Button x:Name="ConfirmPanelNoButton" Grid.Row="2" Grid.Column="1" Content="{x:Static p:Resources.NO_BUTTON_TEXT}" Style="{StaticResource FunctionalButtonStyle}" Click="ConfirmPanelNoButton_Click"/>
+                </Grid>
+            </Grid>
+            <Grid x:Name="ErrorPanel"  Background="Transparent" Visibility="Hidden" Grid.ColumnSpan="2" MaxWidth="500">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition />

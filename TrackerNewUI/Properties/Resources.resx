@@ -126,23 +126,38 @@
   <data name="ADMIN_CAT_TABLE_CATEGORY" xml:space="preserve">
     <value>Category Name</value>
   </data>
-  <data name="ADMIN_SAVE_BUTTON_TEXT" xml:space="preserve">
-    <value>Save</value>
+  <data name="ADMIN_DELETE_BUTTON_TEXT" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ADMIN_NEW_BUTTON_TEXT" xml:space="preserve">
+    <value>New</value>
   </data>
   <data name="CATEGORY_LABEL_TEXT" xml:space="preserve">
     <value>Category</value>
+  </data>
+  <data name="CONFIRM_CATEGORY_DELETE" xml:space="preserve">
+    <value>If you delete "{CATEGORY_NAME}", all tracked times for this category will get lost. Continue?</value>
+  </data>
+  <data name="CONFIRM_HEADER" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ERROR_CATEGORY_IS_ACTIVE" xml:space="preserve">
+    <value>You are not allowed to delete active categories.</value>
   </data>
   <data name="ERROR_HEADER" xml:space="preserve">
     <value>Error</value>
   </data>
   <data name="ERROR_NO_CATEGORY_CHOSEN" xml:space="preserve">
-    <value>No category chosen</value>
+    <value>No category chosen.</value>
   </data>
   <data name="EXIT_BUTTON_TEXT" xml:space="preserve">
     <value>Exit</value>
   </data>
   <data name="MAIN_WINDOW_TITLE" xml:space="preserve">
     <value>Time Tracker</value>
+  </data>
+  <data name="NO_BUTTON_TEXT" xml:space="preserve">
+    <value>No</value>
   </data>
   <data name="OK_BUTTON_TEXT" xml:space="preserve">
     <value>OK</value>
@@ -158,5 +173,8 @@
   </data>
   <data name="STOP_BUTTON_TEXT" xml:space="preserve">
     <value>Stop</value>
+  </data>
+  <data name="YES_BUTTON_TEXT" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

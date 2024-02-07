@@ -24,19 +24,11 @@ namespace TrackerNewUI
         public MainWindow()
         {
             InitializeComponent();
-            Categories = TrackerLogic.GetCategories();
             Style = (Style)FindResource(typeof(Window));
-            //UpdateWorkPanel(Panel.Processing);
             UpdateWorkPanel(Panel.Administration);
-            BindControls();
+            UpdateCategoriesFromData();
         }
 
-        private void BindControls()
-        {
-            ProcessingCategoryComboBox.ItemsSource = Categories.Where(c => c.Active);
-            AdministrationCategoriesDataGrid.ItemsSource = Categories;
-        }
-        
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -86,8 +78,18 @@ namespace TrackerNewUI
 
         private void ShowErorr(string msg)
         {
+            // TODO - refactor from Label to TextBlock for message (create style use style for TextBlock)
+            
             ErrorPanelMessageLabel.Content = msg;
             ErrorPanel.Visibility = Visibility.Visible;
+        }
+
+        private void ShowConfirm(string msg)
+        {
+            // TODO - use style for TextBlock
+
+            ConfirmPanelMessageTextBlock.Text = msg;
+            ConfirmPanel.Visibility = Visibility.Visible;
         }
 
         private void ErrorPanelOkButton_Click(object sender, RoutedEventArgs e)
@@ -129,18 +131,61 @@ namespace TrackerNewUI
             WindowState = WindowState.Minimized;
         }
 
-        private void AdministrationSaveButton_Click(object sender, RoutedEventArgs e)
+        private void AdministrationNewButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveCategoryTable();
+            InsertCategory();
         }
 
-        private void SaveCategoryTable()
+        private void InsertCategory()
         {
             ShowErorr("Not implemented");
-            
-            // TODO - check validity of data
-            // TODO - save data, if valid
-            // TODO - give feedback, if data not valid
+        }
+
+        private void AdministrationDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteCategory();
+        }
+
+        private void DeleteCategory()
+        {
+            CategoryModel? cm = (CategoryModel)AdministrationCategoriesDataGrid.SelectedItem;
+
+
+            if (cm == null)
+            {
+                ShowErorr(Properties.Resources.ERROR_NO_CATEGORY_CHOSEN);
+                return;
+            }
+
+            if (cm.Active)
+            {
+                ShowErorr(Properties.Resources.ERROR_CATEGORY_IS_ACTIVE);
+                return;
+            }
+
+            ShowConfirm(Properties.Resources.CONFIRM_CATEGORY_DELETE.Replace("{CATEGORY_NAME}", cm.Name));
+        }
+
+        /// <summary>
+        /// Gets the categories from the data and update all binded controls.
+        /// </summary>
+        private void UpdateCategoriesFromData()
+        {
+            Categories = TrackerLogic.GetCategories();
+            AdministrationCategoriesDataGrid.ItemsSource = null;
+            AdministrationCategoriesDataGrid.ItemsSource = Categories;
+            ProcessingCategoryComboBox.ItemsSource = null;
+            ProcessingCategoryComboBox.ItemsSource = Categories.Where(c => c.Active);
+        }
+
+        private void ConfirmPanelNoButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmPanel.Visibility = Visibility.Hidden;
+        }
+
+        private void ConfirmPanelYesButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowErorr("Not implemented");
         }
     }
 }
