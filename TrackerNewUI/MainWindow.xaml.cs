@@ -1,23 +1,19 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using TrackerLibrary;
 
 namespace TrackerNewUI
 {
+    // TODO - implement active setting on administration
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
         private enum Panel { Processing, Reporting, Administration };
+        private enum ConfirmAction { DeleteCategory };
+        private ConfirmAction? CurrentConfirmAction;
         private List<CategoryModel> Categories = new();
         private TrackedTimeModel? trackedTimeModel;
         
@@ -78,16 +74,12 @@ namespace TrackerNewUI
 
         private void ShowErorr(string msg)
         {
-            // TODO - refactor from Label to TextBlock for message (create style use style for TextBlock)
-            
-            ErrorPanelMessageLabel.Content = msg;
+            ErrorPanelMessageTextBlock.Text = msg;
             ErrorPanel.Visibility = Visibility.Visible;
         }
 
         private void ShowConfirm(string msg)
         {
-            // TODO - use style for TextBlock
-
             ConfirmPanelMessageTextBlock.Text = msg;
             ConfirmPanel.Visibility = Visibility.Visible;
         }
@@ -138,7 +130,9 @@ namespace TrackerNewUI
 
         private void InsertCategory()
         {
-            ShowErorr("Not implemented");
+            NewCategoryPanelTextBox.Text = string.Empty;
+            NewCategoryPanel.Visibility = Visibility.Visible;
+            NewCategoryPanelTextBox.Focus();
         }
 
         private void AdministrationDeleteButton_Click(object sender, RoutedEventArgs e)
@@ -163,6 +157,7 @@ namespace TrackerNewUI
                 return;
             }
 
+            CurrentConfirmAction = ConfirmAction.DeleteCategory;
             ShowConfirm(Properties.Resources.CONFIRM_CATEGORY_DELETE.Replace("{CATEGORY_NAME}", cm.Name));
         }
 
@@ -185,7 +180,40 @@ namespace TrackerNewUI
 
         private void ConfirmPanelYesButton_Click(object sender, RoutedEventArgs e)
         {
-            ShowErorr("Not implemented");
+            if (CurrentConfirmAction == ConfirmAction.DeleteCategory)
+            {
+                CategoryModel cm = (CategoryModel)AdministrationCategoriesDataGrid.SelectedItem;
+                TrackerLogic.RemoveCategory(cm.Name);
+                UpdateCategoriesFromData();
+            }
+            ConfirmPanel.Visibility = Visibility.Hidden;
+        }
+
+        private void NewCategoryPanelCancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            NewCategoryPanel.Visibility = Visibility.Hidden;
+        }
+
+        private void NewCategoryPanelOkButton_Click(object sender, RoutedEventArgs e)
+        {
+            string cat = NewCategoryPanelTextBox.Text;
+
+
+            if (cat == "")
+            {
+                ShowErorr(Properties.Resources.ERROR_NO_CATEGORY_CHOSEN);
+                return;
+            }
+
+            if (Categories.Exists(c => c.Name == cat))
+            {
+                ShowErorr(Properties.Resources.NEW_CATEGORY_CAT_EXISTS.Replace("{CATEGORY_NAME}", cat));
+                return;
+            }
+
+            TrackerLogic.AddCategory(cat);
+            UpdateCategoriesFromData();
+            NewCategoryPanel.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -106,6 +106,15 @@ namespace TrackerNewUI.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Cancel ähnelt.
+        /// </summary>
+        public static string CANCEL_BUTTON_TEXT {
+            get {
+                return ResourceManager.GetString("CANCEL_BUTTON_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Category ähnelt.
         /// </summary>
         public static string CATEGORY_LABEL_TEXT {
@@ -174,6 +183,24 @@ namespace TrackerNewUI.Properties {
         public static string MAIN_WINDOW_TITLE {
             get {
                 return ResourceManager.GetString("MAIN_WINDOW_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Category &quot;{CATEGORY_NAME}&quot; alread exist. ähnelt.
+        /// </summary>
+        public static string NEW_CATEGORY_CAT_EXISTS {
+            get {
+                return ResourceManager.GetString("NEW_CATEGORY_CAT_EXISTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die New Category ähnelt.
+        /// </summary>
+        public static string NEW_CATEGORY_PANEL_HEADER {
+            get {
+                return ResourceManager.GetString("NEW_CATEGORY_PANEL_HEADER", resourceCulture);
             }
         }
         

@@ -132,6 +132,9 @@
   <data name="ADMIN_NEW_BUTTON_TEXT" xml:space="preserve">
     <value>New</value>
   </data>
+  <data name="CANCEL_BUTTON_TEXT" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="CATEGORY_LABEL_TEXT" xml:space="preserve">
     <value>Category</value>
   </data>
@@ -155,6 +158,12 @@
   </data>
   <data name="MAIN_WINDOW_TITLE" xml:space="preserve">
     <value>Time Tracker</value>
+  </data>
+  <data name="NEW_CATEGORY_CAT_EXISTS" xml:space="preserve">
+    <value>Category "{CATEGORY_NAME}" alread exist.</value>
+  </data>
+  <data name="NEW_CATEGORY_PANEL_HEADER" xml:space="preserve">
+    <value>New Category</value>
   </data>
   <data name="NO_BUTTON_TEXT" xml:space="preserve">
     <value>No</value>
