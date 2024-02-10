@@ -6,7 +6,13 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>TrackerUI.Program</StartupObject>
+    <ApplicationIcon>Assets\TT_darkgray_near_black_background_24x24.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\TT_darkgray_near_black_background_24x24.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TrackerLibrary\TrackerLibrary.csproj" />
