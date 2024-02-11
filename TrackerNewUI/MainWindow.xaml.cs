@@ -1,11 +1,10 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using TrackerLibrary;
 
 namespace TrackerNewUI
 {
-    // TODO - implement active setting on administration
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -14,14 +13,15 @@ namespace TrackerNewUI
         private enum Panel { Processing, Reporting, Administration };
         private enum ConfirmAction { DeleteCategory };
         private ConfirmAction? CurrentConfirmAction;
-        private List<CategoryModel> Categories = new();
-        private TrackedTimeModel? trackedTimeModel;
+        private List<CategoryModel> Categories = [];
+        private TrackedTimeModel? TrackedTimeModel;
+        private List<TrackedTimeModel> TrackedTimes = [];
         
         public MainWindow()
         {
             InitializeComponent();
             Style = (Style)FindResource(typeof(Window));
-            UpdateWorkPanel(Panel.Administration);
+            UpdateWorkPanel(Panel.Processing);
             UpdateCategoriesFromData();
         }
 
@@ -35,6 +35,9 @@ namespace TrackerNewUI
             ProcessingPanel.Visibility = p == Panel.Processing ? Visibility.Visible : Visibility.Hidden;
             ReportingPanel.Visibility = p == Panel.Reporting ? Visibility.Visible : Visibility.Hidden;
             AdministrationPanel.Visibility = p == Panel.Administration ? Visibility.Visible : Visibility.Hidden;
+
+            if (ReportingPanel.Visibility == Visibility.Visible)
+                UpdateTrackedTimesFromData();
         }
 
         private void ProcessingButton_Click(object sender, RoutedEventArgs e)
@@ -68,7 +71,7 @@ namespace TrackerNewUI
             ProcessingStartButton.IsEnabled = false;
             ProcessingCategoryComboBox.IsEnabled = false;
             NavigationPanel.IsEnabled = false;
-            trackedTimeModel = TrackerLogic.Start(((CategoryModel)ProcessingCategoryComboBox.SelectedItem).Name);
+            TrackedTimeModel = TrackerLogic.Start(((CategoryModel)ProcessingCategoryComboBox.SelectedItem).Name);
             ProcessingStopButton.IsEnabled = true;
         }
 
@@ -83,7 +86,7 @@ namespace TrackerNewUI
             ConfirmPanelMessageTextBlock.Text = msg;
             ConfirmPanel.Visibility = Visibility.Visible;
         }
-
+        
         private void ErrorPanelOkButton_Click(object sender, RoutedEventArgs e)
         {
             ErrorPanel.Visibility = Visibility.Hidden;
@@ -96,12 +99,12 @@ namespace TrackerNewUI
 
         private void StopProcessing()
         {
-            if (trackedTimeModel == null)
+            if (TrackedTimeModel == null)
                 return;
             
             ProcessingStopButton.IsEnabled = false;
-            TrackerLogic.Stop(trackedTimeModel);
-            trackedTimeModel = null;
+            TrackerLogic.Stop(TrackedTimeModel);
+            TrackedTimeModel = null;
             NavigationPanel.IsEnabled = true;
             ProcessingCategoryComboBox.IsEnabled = true;
             ProcessingStartButton.IsEnabled = true;
@@ -144,7 +147,6 @@ namespace TrackerNewUI
         {
             CategoryModel? cm = (CategoryModel)AdministrationCategoriesDataGrid.SelectedItem;
 
-
             if (cm == null)
             {
                 ShowErorr(Properties.Resources.ERROR_NO_CATEGORY_CHOSEN);
@@ -171,6 +173,16 @@ namespace TrackerNewUI
             AdministrationCategoriesDataGrid.ItemsSource = Categories;
             ProcessingCategoryComboBox.ItemsSource = null;
             ProcessingCategoryComboBox.ItemsSource = Categories.Where(c => c.Active);
+        }
+
+        /// <summary>
+        /// Gets the tracked times from the data and update all binded controls.
+        /// </summary>
+        private void UpdateTrackedTimesFromData()
+        {
+            TrackedTimes = TrackerLogic.GetTrackedTimes();
+            ReportingTrackedTimesDataGrid.ItemsSource = null;
+            ReportingTrackedTimesDataGrid.ItemsSource = TrackedTimes;
         }
 
         private void ConfirmPanelNoButton_Click(object sender, RoutedEventArgs e)
@@ -214,6 +226,22 @@ namespace TrackerNewUI
             TrackerLogic.AddCategory(cat);
             UpdateCategoriesFromData();
             NewCategoryPanel.Visibility = Visibility.Hidden;
+        }
+
+        private void AdministrationCategoriesDataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (e.Column.Header.ToString() == Properties.Resources.ADMIN_CAT_TABLE_ACTIVE)
+                ToggleActiveFlagForCategory((CategoryModel)e.Row.DataContext);
+        }
+
+        private void ToggleActiveFlagForCategory(CategoryModel cm)
+        {
+            if (cm.Active)
+                TrackerLogic.DeactivateCategory(cm.Name);
+            else
+                TrackerLogic.ActivateCategory(cm.Name);
+
+            UpdateCategoriesFromData();
         }
     }
 }

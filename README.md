@@ -11,13 +11,21 @@ A Program to track times for different activity categories.
 - C#
 
 ## Status Windows Forms UI
-- Category administration (add, delete, activity status)
 - Time tracking (start, stop) for current category
 - Tracked times overview
+- Category administration (add, delete, activity status)
 
 ![Time Tracker Main Form](/README-Images/MainForm.jpg?raw=true "Time Tracker") ![Categories Form](/README-Images/CategoriesForm.jpg?raw=true "Time Tracker")
 
 ![TrackedTimes Form](/README-Images/TrackedTimesForm.jpg?raw=true "Time Tracker")
 
 ## Status WPF UI
-- in progess - not usable
+- Time tracking (start, stop) for current category
+- Tracked times overview
+- Category administration (add, delete, activity status)
+
+![Time Tracker Processing WPF](/README-Images/ProcessingWPF.jpg?raw=true "Time Tracker")
+
+![Time Tracker Reporting WPF](/README-Images/ReportingWPF.jpg?raw=true "Time Tracker")
+
+![Time Tracker Administration WPF](/README-Images/AdministrationWPF.jpg?raw=true "Time Tracker")

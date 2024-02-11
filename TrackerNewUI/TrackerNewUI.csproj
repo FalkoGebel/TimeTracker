@@ -6,10 +6,15 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets\TT_darkgray_near_black_background_24x24.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Assets\TT_darkgray_near_black_background_24x24.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\TT_darkgray_near_black_background_24x24.ico" />
   </ItemGroup>
 
   <ItemGroup>
