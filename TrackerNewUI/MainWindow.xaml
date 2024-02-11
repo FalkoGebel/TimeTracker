@@ -551,7 +551,7 @@
                         </StackPanel>
                     </Grid>
                 </Border>
-                <Grid DockPanel.Dock="Right" Height="400" Width="400" Background="White">
+                <Grid DockPanel.Dock="Right" Width="600" Height="400" Background="White">
                     <Grid x:Name="ProcessingPanel" Background="{StaticResource BrushWhite}" Visibility="Hidden">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"/>
@@ -584,10 +584,26 @@
                         <Button x:Name="ProcessingStartButton" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" Content="{x:Static p:Resources.START_BUTTON_TEXT}"  Style="{StaticResource FunctionalButtonStyle}" Click="ProcessingStartButton_Click"/>
                         <Button x:Name="ProcessingStopButton" Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="4" Content="{x:Static p:Resources.STOP_BUTTON_TEXT}"  Style="{StaticResource FunctionalButtonStyle}" Click="ProcessingStopButton_Click" IsEnabled="False"/>
                     </Grid>
-                    <Grid x:Name="ReportingPanel" Background="{StaticResource BrushWhite}" Visibility="Hidden">
-                        <Label HorizontalAlignment="Center" VerticalAlignment="Center">Reporting</Label>
+                    <Grid x:Name="ReportingPanel" Background="{StaticResource BrushWhite}" Visibility="Visible">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="{x:Static p:Resources.REPORTING_BUTTON_TEXT}" Style="{DynamicResource AreaHeaderLabelStyle}"/>
+                        <DataGrid x:Name="ReportingTrackedTimesDataGrid" Grid.Row="1" Grid.Column="0" Margin="0,5,0,0" HeadersVisibility="Column"
+                                  Style="{DynamicResource DataGridStyle}" 
+                                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}"
+                                  RowStyle="{DynamicResource DataGridRowStyle}" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="{x:Static p:Resources.ADMIN_CAT_TABLE_CATEGORY}" Width="*" Binding="{Binding Category.Name}"/>
+                                <DataGridTextColumn Header="{x:Static p:Resources.REPORTING_TT_TABLE_START}" Binding="{Binding Start, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}"/>
+                                <DataGridTextColumn Header="{x:Static p:Resources.REPORTING_TT_TABLE_END}" Binding="{Binding End, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}"/>
+                                <DataGridTextColumn Header="{x:Static p:Resources.REPORTING_TT_TABLE_DURATION}" Binding="{Binding Duration}"/>
+                                <DataGridCheckBoxColumn Header="{x:Static p:Resources.ADMIN_CAT_TABLE_ACTIVE}" Binding="{Binding Category.Active}"></DataGridCheckBoxColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </Grid>
-                    <Grid x:Name="AdministrationPanel" Background="{StaticResource BrushWhite}" Visibility="Visible">
+                    <Grid x:Name="AdministrationPanel" Background="{StaticResource BrushWhite}" Visibility="Hidden">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"/>
                             <RowDefinition/>
@@ -598,7 +614,7 @@
                         <DataGrid x:Name="AdministrationCategoriesDataGrid" Grid.Row="1" Grid.Column="0" Margin="0,5,0,0" HeadersVisibility="Column"
                                   Style="{DynamicResource DataGridStyle}" 
                                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}"
-                                  RowStyle="{DynamicResource DataGridRowStyle}" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+                                  RowStyle="{DynamicResource DataGridRowStyle}" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" SelectionMode="Single" CellEditEnding="AdministrationCategoriesDataGrid_CellEditEnding">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="{x:Static p:Resources.ADMIN_CAT_TABLE_CATEGORY}" Width="*" Binding="{Binding Name}" IsReadOnly="True"/>
                                 <DataGridCheckBoxColumn Header="{x:Static p:Resources.ADMIN_CAT_TABLE_ACTIVE}" Binding="{Binding Active}"></DataGridCheckBoxColumn>
@@ -670,8 +686,8 @@
                         <Label Content="{x:Static p:Resources.CATEGORY_LABEL_TEXT}" Style="{DynamicResource NormalLabelStyle}"/>
                         <TextBox Style="{DynamicResource TextBoxStyle}" x:Name="NewCategoryPanelTextBox" VerticalAlignment="Center"/>
                     </DockPanel>
-                    <Button x:Name="NewCategoryPanelOkButton" Grid.Row="2" Grid.Column="0" Content="{x:Static p:Resources.OK_BUTTON_TEXT}" Style="{StaticResource FunctionalButtonStyle}" Click="NewCategoryPanelOkButton_Click" IsDefault="True"/>
-                    <Button x:Name="NewCategoryPanelCancelButton" Grid.Row="2" Grid.Column="1" Content="{x:Static p:Resources.CANCEL_BUTTON_TEXT}" Style="{StaticResource FunctionalButtonStyle}" Click="NewCategoryPanelCancelButton_Click" IsCancel="True"/>
+                    <Button x:Name="NewCategoryPanelOkButton" Grid.Row="2" Grid.Column="0" Content="{x:Static p:Resources.OK_BUTTON_TEXT}" Style="{StaticResource FunctionalButtonStyle}" Click="NewCategoryPanelOkButton_Click"/>
+                    <Button x:Name="NewCategoryPanelCancelButton" Grid.Row="2" Grid.Column="1" Content="{x:Static p:Resources.CANCEL_BUTTON_TEXT}" Style="{StaticResource FunctionalButtonStyle}" Click="NewCategoryPanelCancelButton_Click"/>
                 </Grid>
             </Grid>
             <Grid x:Name="ErrorPanel"  Background="Transparent" Visibility="Hidden" Grid.ColumnSpan="2" MaxWidth="500">
@@ -694,7 +710,7 @@
                     </Grid.RowDefinitions>
                     <Label Content="{x:Static p:Resources.ERROR_HEADER}" Style="{DynamicResource HeaderLabelStyle}"/>
                     <TextBlock x:Name="ErrorPanelMessageTextBlock" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" Padding="12"/>
-                    <Button x:Name="ErrorPanelOkButton" Grid.Row="2" Content="{x:Static p:Resources.OK_BUTTON_TEXT}" Style="{StaticResource FunctionalButtonStyle}" Click="ErrorPanelOkButton_Click" />
+                    <Button x:Name="ErrorPanelOkButton" Grid.Row="2" Content="{x:Static p:Resources.OK_BUTTON_TEXT}" Style="{StaticResource FunctionalButtonStyle}" Click="ErrorPanelOkButton_Click" IsDefault="True" />
                 </Grid>
             </Grid>
         </Grid>

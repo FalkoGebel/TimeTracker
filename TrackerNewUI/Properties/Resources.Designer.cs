@@ -241,6 +241,33 @@ namespace TrackerNewUI.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Duration ähnelt.
+        /// </summary>
+        public static string REPORTING_TT_TABLE_DURATION {
+            get {
+                return ResourceManager.GetString("REPORTING_TT_TABLE_DURATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die End ähnelt.
+        /// </summary>
+        public static string REPORTING_TT_TABLE_END {
+            get {
+                return ResourceManager.GetString("REPORTING_TT_TABLE_END", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Start ähnelt.
+        /// </summary>
+        public static string REPORTING_TT_TABLE_START {
+            get {
+                return ResourceManager.GetString("REPORTING_TT_TABLE_START", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Start ähnelt.
         /// </summary>
         public static string START_BUTTON_TEXT {

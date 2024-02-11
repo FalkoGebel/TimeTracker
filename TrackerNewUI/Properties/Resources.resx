@@ -177,6 +177,15 @@
   <data name="REPORTING_BUTTON_TEXT" xml:space="preserve">
     <value>Reporting</value>
   </data>
+  <data name="REPORTING_TT_TABLE_DURATION" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="REPORTING_TT_TABLE_END" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="REPORTING_TT_TABLE_START" xml:space="preserve">
+    <value>Start</value>
+  </data>
   <data name="START_BUTTON_TEXT" xml:space="preserve">
     <value>Start</value>
   </data>
