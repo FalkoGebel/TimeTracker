@@ -16,7 +16,7 @@ namespace TrackerNewUI
         private List<CategoryModel> Categories = [];
         private TrackedTimeModel? TrackedTimeModel;
         private List<TrackedTimeModel> TrackedTimes = [];
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -86,7 +86,7 @@ namespace TrackerNewUI
             ConfirmPanelMessageTextBlock.Text = msg;
             ConfirmPanel.Visibility = Visibility.Visible;
         }
-        
+
         private void ErrorPanelOkButton_Click(object sender, RoutedEventArgs e)
         {
             ErrorPanel.Visibility = Visibility.Hidden;
@@ -101,7 +101,7 @@ namespace TrackerNewUI
         {
             if (TrackedTimeModel == null)
                 return;
-            
+
             ProcessingStopButton.IsEnabled = false;
             TrackerLogic.Stop(TrackedTimeModel);
             TrackedTimeModel = null;
@@ -182,6 +182,7 @@ namespace TrackerNewUI
         {
             TrackedTimes = TrackerLogic.GetTrackedTimes();
             ReportingTrackedTimesDataGrid.ItemsSource = null;
+            TrackedTimes.Reverse();
             ReportingTrackedTimesDataGrid.ItemsSource = TrackedTimes;
         }
 
